@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Un regalito para mi amor ❤️</title>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Un dibujito para mi amor ❤️</title>
+  <!-- Google Fonts: Caveat & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
   <style>
     * {
       box-sizing: border-box;
@@ -13,44 +17,46 @@
     }
 
     body {
-      background: linear-gradient(135deg, #ffeef8 0%, #f0e6ff 100%);
+      background: linear-gradient(135deg, #ffeef8 0%, #f4e8ff 50%, #ffeaf3 100%);
       font-family: 'Poppins', sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 20px 12px;
       color: #4a3e4e;
       overflow-x: hidden;
     }
 
-    .container {
+    .card-container {
       width: 100%;
-      max-width: 500px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 24px;
-      padding: 25px 20px;
-      box-shadow: 0 15px 35px rgba(210, 140, 180, 0.2);
+      max-width: 480px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-radius: 28px;
+      padding: 28px 22px;
+      box-shadow: 0 20px 45px rgba(216, 92, 138, 0.18), 0 5px 15px rgba(0, 0, 0, 0.03);
       text-align: center;
       position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      transition: all 0.4s ease;
     }
 
     h1 {
       font-family: 'Caveat', cursive;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       color: #d85c8a;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      line-height: 1.2;
     }
 
-    p.sub {
-      font-size: 0.9rem;
-      color: #7a6a80;
-      margin-bottom: 18px;
+    p.sub-text {
+      font-size: 0.92rem;
+      color: #7b6a82;
+      margin-bottom: 20px;
     }
 
-    /* PASO 1: PUZZLE */
     #step-puzzle {
       display: block;
     }
@@ -61,254 +67,286 @@
       gap: 6px;
       width: 270px;
       height: 270px;
-      margin: 0 auto 15px auto;
-      background: #ffd6e7;
-      padding: 6px;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      margin: 0 auto 18px auto;
+      background: #ffdbe9;
+      padding: 8px;
+      border-radius: 20px;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.06), 0 10px 25px rgba(216, 92, 138, 0.15);
     }
 
-    .piece {
-      width: 82px;
-      height: 82px;
-      border-radius: 8px;
+    .puzzle-tile {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
       cursor: pointer;
       user-select: none;
-      transition: transform 0.15s ease, opacity 0.2s;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.18s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.18s;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
     }
 
-    .piece.empty {
-      background: rgba(255, 255, 255, 0.3) !important;
-      box-shadow: none;
+    .puzzle-tile:hover {
+      transform: scale(0.97);
+    }
+
+    .puzzle-tile.empty {
+      background: rgba(255, 255, 255, 0.35) !important;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
       cursor: default;
     }
 
-    .btn {
+    .btn-main {
       background: linear-gradient(135deg, #ff7597 0%, #d85c8a 100%);
-      color: white;
+      color: #ffffff;
       border: none;
-      padding: 12px 28px;
+      padding: 14px 32px;
       font-size: 1.05rem;
       font-weight: 600;
       border-radius: 50px;
       cursor: pointer;
-      box-shadow: 0 6px 18px rgba(216, 92, 138, 0.35);
+      box-shadow: 0 8px 22px rgba(216, 92, 138, 0.38);
       transition: all 0.3s ease;
       font-family: 'Poppins', sans-serif;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(216, 92, 138, 0.5);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: #9d8aa5;
-      font-size: 0.82rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       margin-top: 10px;
-      text-decoration: underline;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(216, 92, 138, 0.5);
+    }
+
+    .btn-main:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .btn-skip {
+      background: transparent;
+      color: #a48ba8;
+      font-size: 0.85rem;
+      margin-top: 14px;
+      text-decoration: none;
       cursor: pointer;
       border: none;
+      padding: 6px 12px;
+      border-radius: 12px;
+      transition: all 0.2s;
+      display: block;
+      width: 100%;
     }
 
-    /* PASO 2: PUERTA DESBLOQUEADA */
+    .btn-skip:hover {
+      color: #d85c8a;
+      background: rgba(255, 235, 245, 0.5);
+    }
+
     #step-door {
       display: none;
-      animation: fadeIn 0.8s ease forwards;
+      animation: fadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    .door-icon {
-      font-size: 4rem;
-      margin: 15px 0;
-      animation: pulse 2s infinite;
+    .door-wrapper {
+      font-size: 4.8rem;
+      margin: 20px 0;
+      animation: bouncePulse 2s infinite ease-in-out;
+      display: inline-block;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+    @keyframes bouncePulse {
+      0%, 100% { transform: scale(1) translateY(0); }
+      50% { transform: scale(1.12) translateY(-8px); }
     }
 
-    /* PASO 3: DIBUJO Y CARTA */
     #step-drawing {
       display: none;
       animation: fadeIn 0.8s ease forwards;
     }
 
-    .illustration-box {
+    .drawing-card {
       width: 100%;
-      max-width: 360px;
-      margin: 0 auto;
       background: #ffffff;
-      border-radius: 20px;
-      padding: 15px;
-      box-shadow: inset 0 0 10px rgba(0,0,0,0.03), 0 8px 20px rgba(0,0,0,0.05);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: inset 0 0 12px rgba(0,0,0,0.02), 0 10px 25px rgba(0,0,0,0.04);
+      margin: 12px 0 20px 0;
       position: relative;
     }
 
-    /* SVG ANIMADO CON TEXTURA */
-    svg#art-svg {
+    /* SVG Drawing Styling */
+    svg#couple-svg {
       width: 100%;
+      max-width: 330px;
       height: auto;
       display: block;
+      margin: 0 auto;
     }
 
-    .stroke-path {
+    /* Stroke-dashoffset animation */
+    .draw-path {
       stroke-dasharray: 1000;
       stroke-dashoffset: 1000;
-      animation: drawLine 2.5s ease-in-out forwards;
+      animation: animateStroke 2.2s ease-in-out forwards;
     }
 
-    .fade-fill {
+    .heart-path {
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+      animation: animateStroke 1.5s ease-in-out forwards;
+    }
+
+    .fade-element {
       opacity: 0;
-      animation: fadeInFill 1.2s ease forwards;
+      animation: fadeInSoft 1s ease forwards;
     }
 
-    @keyframes drawLine {
+    @keyframes animateStroke {
       to { stroke-dashoffset: 0; }
     }
 
-    @keyframes fadeInFill {
+    @keyframes fadeInSoft {
       to { opacity: 1; }
     }
 
-    /* CARTA FINAL */
+    /* Letter Box */
     #letter-box {
       display: none;
-      margin-top: 20px;
+      margin-top: 18px;
       background: #fff8fc;
-      border: 2px dashed #f1789e;
-      border-radius: 16px;
-      padding: 18px;
+      border: 2px dashed #f591b3;
+      border-radius: 20px;
+      padding: 22px 18px;
       text-align: center;
-      animation: fadeInUp 1s ease forwards;
+      animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     #letter-box h2 {
       font-family: 'Caveat', cursive;
-      font-size: 1.9rem;
+      font-size: 2.1rem;
       color: #d85c8a;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     #letter-box p {
-      font-size: 0.95rem;
-      line-height: 1.5;
-      color: #5a4b60;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: #534358;
       font-weight: 500;
     }
 
+    /* Keyframe Animations */
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
+      from { opacity: 0; transform: scale(0.96); }
       to { opacity: 1; transform: scale(1); }
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(22px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .heart {
+    /* Floating Hearts Background Animation */
+    .floating-heart {
       position: fixed;
-      color: #ff6b8b;
-      font-size: 20px;
+      font-size: 22px;
       pointer-events: none;
-      animation: floatUp 4s linear infinite;
-      z-index: 100;
+      animation: floatHeart 4.5s linear infinite;
+      z-index: 999;
+      filter: drop-shadow(0 2px 4px rgba(255, 100, 150, 0.3));
     }
 
-    @keyframes floatUp {
-      0% { transform: translateY(100vh) scale(0); opacity: 1; }
-      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    @keyframes floatHeart {
+      0% { transform: translateY(105vh) scale(0.3) rotate(0deg); opacity: 1; }
+      50% { opacity: 0.85; }
+      100% { transform: translateY(-10vh) scale(1.2) rotate(25deg); opacity: 0; }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <div class="card-container">
     
     <!-- PASO 1: PUZZLE -->
     <div id="step-puzzle">
       <h1>🔓 La Puerta Secreta</h1>
-      <p class="sub">Arma el rompecabezas para desbloquear el regalo</p>
+      <p class="sub-text">Ordena las piezas para desbloquear tu regalo de amor</p>
       
       <div class="puzzle-board" id="puzzle-board"></div>
       
-      <button class="btn-secondary" onclick="unlockDoor()">¿Muy difícil? Desbloquear de todos modos ✨</button>
+      <button class="btn-skip" onclick="unlockDoor()">¿Muy difícil? Desbloquear de todos modos ✨</button>
     </div>
 
     <!-- PASO 2: PUERTA DESBLOQUEADA -->
     <div id="step-door">
       <h1>✨ ¡Puerta Desbloqueada! ✨</h1>
-      <p class="sub">Presiona el botón para descubrir tu sorpresa</p>
+      <p class="sub-text">Haz clic abajo para descubrir tu sorpresita</p>
       
-      <div class="door-icon">🎁</div>
+      <div class="door-wrapper">🎁</div>
       
-      <button class="btn" onclick="startSurprise()">✨ Abrir mi regalo ✨</button>
+      <br>
+      <button class="btn-main" onclick="startSurprise()">✨ Abrir mi regalo ✨</button>
     </div>
 
     <!-- PASO 3: DIBUJO Y CARTA -->
     <div id="step-drawing">
       <h1>un dibujito para mi amor ❤️</h1>
       
-      <div class="illustration-box">
-        <svg id="art-svg" viewBox="0 0 400 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Filtro de textura Crayón/Lápiz -->
-          <defs>
-            <filter id="crayon-filter">
-              <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="2" result="noise" />
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
-            </filter>
-          </defs>
-
+      <div class="drawing-card">
+        <!-- SVG parejita abrazo rizado idéntico a la referencia -->
+        <svg id="couple-svg" viewBox="0 0 400 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          
           <!-- Corazón Izquierda -->
-          <path class="stroke-path" style="animation-delay: 0s;" stroke="#e63946" stroke-width="4" stroke-linecap="round" stroke-dasharray="3,3" filter="url(#crayon-filter)"
-            d="M 75,170 C 50,130 15,160 45,195 C 65,215 75,230 75,230 C 75,230 85,215 105,195 C 135,160 100,130 75,170 Z" />
+          <path class="heart-path" style="animation-delay: 0.1s;" stroke="#f0436b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
+            d="M 85,160 C 60,120 20,150 50,190 C 70,210 85,225 85,225 C 85,225 100,210 120,190 C 150,150 110,120 85,160 Z" />
 
           <!-- Corazón Arriba -->
-          <path class="stroke-path" style="animation-delay: 0.8s;" stroke="#e63946" stroke-width="4" stroke-linecap="round" stroke-dasharray="3,3" filter="url(#crayon-filter)"
-            d="M 200,65 C 180,30 150,55 175,85 C 190,100 200,112 200,112 C 200,112 210,100 225,85 C 250,55 220,30 200,65 Z" />
+          <path class="heart-path" style="animation-delay: 0.7s;" stroke="#f0436b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
+            d="M 200,60 C 180,25 145,50 172,82 C 187,98 200,110 200,110 C 200,110 213,98 228,82 C 255,50 220,25 200,60 Z" />
 
           <!-- Corazón Derecha -->
-          <path class="stroke-path" style="animation-delay: 1.5s;" stroke="#e63946" stroke-width="4" stroke-linecap="round" stroke-dasharray="3,3" filter="url(#crayon-filter)"
-            d="M 335,190 C 315,155 285,180 310,210 C 325,225 335,237 335,237 C 335,237 345,225 360,210 C 385,180 355,155 335,190 Z" />
+          <path class="heart-path" style="animation-delay: 1.3s;" stroke="#f0436b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
+            d="M 315,175 C 295,135 260,160 288,198 C 303,213 315,225 315,225 C 315,225 327,213 342,198 C 370,160 335,135 315,175 Z" />
 
-          <!-- CORTES DE PELO Y SILUETA DEL CHICO (Rizado abundante) -->
-          <g filter="url(#crayon-filter)" stroke="#2b1a0e" stroke-width="5" stroke-linecap="round">
-            <!-- Rizos Cabeza Chico -->
-            <path class="stroke-path" style="animation-delay: 2.2s;" d="M 170,160 C 150,130 180,95 220,100 C 260,100 300,120 300,165 C 305,195 285,215 260,215" />
-            <path class="stroke-path" style="animation-delay: 2.6s;" d="M 185,135 C 200,115 235,115 255,130 C 275,145 285,175 270,200" />
-            <path class="stroke-path" style="animation-delay: 3.0s;" d="M 205,110 C 225,95 255,105 275,125" />
-            <!-- Espalda y Cuello Chico -->
-            <path class="stroke-path" style="animation-delay: 3.4s;" d="M 245,215 C 275,230 310,260 325,310 L 340,370" />
-            <!-- Frente beso -->
-            <path class="stroke-path" style="animation-delay: 3.8s;" d="M 210,195 C 225,200 235,195 245,185" />
+          <!-- CHICO: Pelo Rizado & Cabeza inclinado abrazando -->
+          <g stroke="#3a2216" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Rizos de pelo Chico -->
+            <path class="draw-path" style="animation-delay: 1.9s;" d="M 180,140 C 165,115 190,90 220,95 C 250,90 280,110 285,145 C 290,175 270,195 245,200" />
+            <path class="draw-path" style="animation-delay: 2.3s;" d="M 195,120 C 215,100 250,105 270,125 C 285,140 280,170 265,190" />
+            <path class="draw-path" style="animation-delay: 2.7s;" d="M 215,98 C 235,88 260,98 275,115" />
+            
+            <!-- Silueta Espalda / Hombro Chico -->
+            <path class="draw-path" style="animation-delay: 3.1s;" d="M 235,198 C 260,210 295,240 310,290 L 325,350" />
+            <!-- Frente del chico rozando a la chica -->
+            <path class="draw-path" style="animation-delay: 3.5s;" d="M 210,180 C 222,185 230,180 238,170" />
           </g>
 
-          <!-- PELO Y CARA DE LA CHICA (Rizado largo tupido) -->
-          <g filter="url(#crayon-filter)" stroke="#3a1e08" stroke-width="5" stroke-linecap="round">
-            <!-- Rizos abundantes Chica -->
-            <path class="stroke-path" style="animation-delay: 4.3s;" d="M 180,190 C 140,160 95,195 90,250 C 80,300 95,350 120,390" />
-            <path class="stroke-path" style="animation-delay: 4.7s;" d="M 195,205 C 155,180 115,220 110,285 C 105,335 125,370 145,405" />
-            <path class="stroke-path" style="animation-delay: 5.1s;" d="M 160,210 C 130,230 125,290 140,350 C 150,380 165,410 175,420" />
-            <path class="stroke-path" style="animation-delay: 5.5s;" d="M 135,240 C 115,275 130,335 155,390" />
-            <!-- Sonrisa Chica -->
-            <path class="stroke-path" style="animation-delay: 5.9s;" stroke="#1a1a1a" stroke-width="4" d="M 160,240 C 175,260 200,260 210,240" />
-            <!-- Ojitos cerrados felices -->
-            <path class="stroke-path" style="animation-delay: 6.2s;" stroke="#1a1a1a" stroke-width="3.5" d="M 165,225 C 172,218 180,225 180,225" />
-            <path class="stroke-path" style="animation-delay: 6.4s;" stroke="#1a1a1a" stroke-width="3.5" d="M 192,225 C 200,218 207,225 207,225" />
+          <!-- CHICA: Pelo Muy Rizado Largo & Sonrisa en el pecho -->
+          <g stroke="#3a2216" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Capa de Pelo Rizado 1 -->
+            <path class="draw-path" style="animation-delay: 4.0s;" d="M 175,185 C 135,160 90,195 85,250 C 80,300 95,350 125,390" />
+            <!-- Capa de Pelo Rizado 2 -->
+            <path class="draw-path" style="animation-delay: 4.4s;" d="M 190,200 C 150,180 110,215 105,280 C 100,330 120,365 145,400" />
+            <!-- Capa de Pelo Rizado 3 -->
+            <path class="draw-path" style="animation-delay: 4.8s;" d="M 160,210 C 130,230 120,285 135,340 C 145,370 160,395 170,405" />
+            <!-- Capa de Pelo Rizado 4 -->
+            <path class="draw-path" style="animation-delay: 5.2s;" d="M 130,240 C 110,275 125,330 150,385" />
+
+            <!-- Carita Feliz Chica (Sonrisa) -->
+            <path class="draw-path" style="animation-delay: 5.6s;" stroke="#20120a" stroke-width="4.5" d="M 162,230 C 175,248 198,248 208,230" />
+            <!-- Ojitos sonrientes cerrados -->
+            <path class="draw-path" style="animation-delay: 6.0s;" stroke="#20120a" stroke-width="4" d="M 166,215 C 172,208 180,215 180,215" />
+            <path class="draw-path" style="animation-delay: 6.2s;" stroke="#20120a" stroke-width="4" d="M 190,215 C 198,208 205,215 205,215" />
           </g>
 
-          <!-- Mejillas Sonrojadas -->
-          <ellipse class="fade-fill" style="animation-delay: 6.8s;" cx="158" cy="242" rx="12" ry="7" fill="#ffb3c1" />
-          <ellipse class="fade-fill" style="animation-delay: 6.8s;" cx="212" cy="238" rx="12" ry="7" fill="#ffb3c1" />
+          <!-- Mejillas Rosadas (Rubor) -->
+          <ellipse class="fade-element" style="animation-delay: 6.6s;" cx="158" cy="232" rx="11" ry="6" fill="#ff9eb5" />
+          <ellipse class="fade-element" style="animation-delay: 6.6s;" cx="212" cy="228" rx="11" ry="6" fill="#ff9eb5" />
         </svg>
       </div>
 
-      <!-- CARTA ROMÁNTICA -->
+      <!-- CARTA FINAL CON EL TEXTO EXACTO SOLICITADO -->
       <div id="letter-box">
-        <h2>Para el amor de mi vida ❤️</h2>
+        <h2>Para el amor de mi vida ❤️️</h2>
         <p>Hoy te amo mas que ayer y menos que mañana, TE AMO MI NIÑOOO</p>
       </div>
     </div>
@@ -316,44 +354,50 @@
   </div>
 
   <script>
-    /* PUZZLE CON IMAGEN */
     const puzzleBoard = document.getElementById('puzzle-board');
+    // Solvable configuration array (0-7 pieces, 8 is empty space)
     let pieces = [0, 1, 2, 3, 4, 5, 6, 8, 7];
 
+    // Generate puzzle texture image via hidden canvas
     const imgCanvas = document.createElement('canvas');
-    imgCanvas.width = 300; imgCanvas.height = 300;
+    imgCanvas.width = 300;
+    imgCanvas.height = 300;
     const imgCtx = imgCanvas.getContext('2d');
     
-    imgCtx.fillStyle = '#ffeef5';
+    // Draw romantic heart image on canvas for puzzle pieces
+    imgCtx.fillStyle = '#ffedf5';
     imgCtx.fillRect(0, 0, 300, 300);
-    imgCtx.fillStyle = '#ff6b8b';
+    imgCtx.fillStyle = '#ff6584';
     imgCtx.beginPath();
-    imgCtx.arc(110, 120, 50, Math.PI, 0, false);
-    imgCtx.arc(190, 120, 50, Math.PI, 0, false);
-    imgCtx.lineTo(150, 220);
+    imgCtx.arc(110, 120, 55, Math.PI, 0, false);
+    imgCtx.arc(190, 120, 55, Math.PI, 0, false);
+    imgCtx.lineTo(150, 225);
     imgCtx.closePath();
     imgCtx.fill();
+    
     imgCtx.fillStyle = '#ffffff';
-    imgCtx.font = 'bold 22px sans-serif';
+    imgCtx.font = 'bold 24px Poppins, sans-serif';
     imgCtx.textAlign = 'center';
-    imgCtx.fillText('TE AMO', 150, 140);
+    imgCtx.fillText('TE AMO', 150, 138);
+
+    const puzzleImgUrl = imgCanvas.toDataURL();
 
     function renderPuzzle() {
       puzzleBoard.innerHTML = '';
       pieces.forEach((pieceIdx, currentPos) => {
-        const div = document.createElement('div');
-        div.className = 'piece' + (pieceIdx === 8 ? ' empty' : '');
+        const tile = document.createElement('div');
+        tile.className = 'puzzle-tile' + (pieceIdx === 8 ? ' empty' : '');
 
         if (pieceIdx !== 8) {
           const row = Math.floor(pieceIdx / 3);
           const col = pieceIdx % 3;
-          div.style.backgroundImage = `url(${imgCanvas.toDataURL()})`;
-          div.style.backgroundSize = '250px 250px';
-          div.style.backgroundPosition = `-${col * 83}px -${row * 83}px`;
+          tile.style.backgroundImage = `url(${puzzleImgUrl})`;
+          tile.style.backgroundSize = '240px 240px';
+          tile.style.backgroundPosition = `-${col * 80}px -${row * 80}px`;
         }
 
-        div.onclick = () => movePiece(currentPos);
-        puzzleBoard.appendChild(div);
+        tile.onclick = () => movePiece(currentPos);
+        puzzleBoard.appendChild(tile);
       });
     }
 
@@ -362,7 +406,9 @@
       const validMoves = [pos - 1, pos + 1, pos - 3, pos + 3];
 
       if (validMoves.includes(emptyPos)) {
+        // Prevent wrapping around grid sides
         if ((pos % 3 === 0 && emptyPos === pos - 1) || (pos % 3 === 2 && emptyPos === pos + 1)) return;
+        
         [pieces[pos], pieces[emptyPos]] = [pieces[emptyPos], pieces[pos]];
         renderPuzzle();
         checkPuzzleWin();
@@ -371,7 +417,7 @@
 
     function checkPuzzleWin() {
       if (pieces.every((val, idx) => val === idx)) {
-        setTimeout(unlockDoor, 300);
+        setTimeout(unlockDoor, 350);
       }
     }
 
@@ -382,60 +428,84 @@
 
     renderPuzzle();
 
-    /* INICIAR SORPRESA */
     function startSurprise() {
       document.getElementById('step-door').style.display = 'none';
       document.getElementById('step-drawing').style.display = 'block';
       
-      playFlyMeToTheMoon();
+      playFlyMeToTheMoonSynth();
       startHeartRain();
 
+      // Reveal romantic letter after drawing animation completes
       setTimeout(() => {
         document.getElementById('letter-box').style.display = 'block';
-      }, 7200);
+      }, 7000);
     }
 
-    /* MÚSICA */
-    function playFlyMeToTheMoon() {
+    /* Web Audio API - Synthesized 'Fly Me to the Moon' Melody */
+    function playFlyMeToTheMoonSynth() {
       try {
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
-        if (!AudioCtx) return;
-        const ctx = new AudioCtx();
-        const notes = [
-          {f: 329.63, d: 0.6}, {f: 293.66, d: 0.4}, {f: 261.63, d: 0.4}, {f: 246.94, d: 0.4},
-          {f: 220.00, d: 0.8}, {f: 293.66, d: 0.6}, {f: 261.63, d: 0.4}, {f: 246.94, d: 0.4},
-          {f: 220.00, d: 0.4}, {f: 196.00, d: 0.8}, {f: 261.63, d: 0.6}, {f: 246.94, d: 0.4}
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+        
+        // Musical notes for "Fly Me to the Moon" main line
+        const melody = [
+          { f: 329.63, d: 0.55 }, // C5
+          { f: 293.66, d: 0.40 }, // B4
+          { f: 261.63, d: 0.40 }, // A4
+          { f: 246.94, d: 0.40 }, // G4
+          { f: 220.00, d: 0.80 }, // F4
+          { f: 293.66, d: 0.55 }, // B4
+          { f: 261.63, d: 0.40 }, // A4
+          { f: 246.94, d: 0.40 }, // G4
+          { f: 220.00, d: 0.40 }, // F4
+          { f: 196.00, d: 0.80 }, // E4
+          { f: 261.63, d: 0.55 }, // A4
+          { f: 246.94, d: 0.40 }, // G4
+          { f: 220.00, d: 0.40 }, // F4
+          { f: 196.00, d: 0.40 }, // E4
+          { f: 174.61, d: 0.90 }  // D4
         ];
+
         let time = ctx.currentTime + 0.1;
-        notes.forEach(note => {
+
+        melody.forEach(note => {
           const osc = ctx.createOscillator();
           const gain = ctx.createGain();
-          osc.type = 'triangle';
+
+          osc.type = 'triangle'; // Soft acoustic instrument timbre
           osc.frequency.setValueAtTime(note.f, time);
-          gain.gain.setValueAtTime(0.12, time);
+
+          gain.gain.setValueAtTime(0.15, time);
           gain.gain.exponentialRampToValueAtTime(0.001, time + note.d);
+
           osc.connect(gain);
           gain.connect(ctx.destination);
+
           osc.start(time);
           osc.stop(time + note.d);
+
           time += note.d;
         });
-      } catch (e) {}
+      } catch (e) {
+        console.log("Audio play blocked by browser policy");
+      }
     }
 
-    /* CORAZONES FLOTANTES */
     function startHeartRain() {
       setInterval(() => {
         const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = ['❤️', '💖', '✨', '💕'][Math.floor(Math.random() * 4)];
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        heart.className = 'floating-heart';
+        heart.innerHTML = ['❤️', '💖', '✨', '💕', '💗'][Math.floor(Math.random() * 5)];
+        heart.style.left = Math.random() * 95 + 'vw';
+        heart.style.animationDuration = (Math.random() * 2 + 3.5) + 's';
         document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 4000);
-      }, 400);
+
+        setTimeout(() => heart.remove(), 4500);
+      }, 350);
     }
   </script>
 </body>
 </html>
 
+  
