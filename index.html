@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Un Regalo Especial Para Ti ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffeef8 0%, #f0e6ff 100%);
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #4a3e4e;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 550px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 28px 20px;
+      box-shadow: 0 15px 35px rgba(210, 140, 180, 0.2);
+      text-align: center;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Caveat', cursive;
+      font-size: 2.3rem;
+      color: #d85c8a;
+      margin-bottom: 12px;
+    }
+
+    p.sub {
+      font-size: 0.95rem;
+      color: #7a6a80;
+      margin-bottom: 20px;
+    }
+
+    /* STEP 1: PUZZLE PUERTA */
+    #step-puzzle {
+      display: block;
+    }
+
+    .puzzle-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      width: 270px;
+      height: 270px;
+      margin: 0 auto 20px auto;
+      background: #ffd6e7;
+      padding: 6px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    .tile {
+      background: #f1789e;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.15s ease, background-color 0.2s ease;
+      box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15);
+    }
+
+    .tile:active {
+      transform: scale(0.95);
+    }
+
+    .tile.empty {
+      background: transparent;
+      box-shadow: none;
+      cursor: default;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #ff7597 0%, #d85c8a 100%);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(216, 92, 138, 0.35);
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(216, 92, 138, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #9d8aa5;
+      font-size: 0.82rem;
+      margin-top: 12px;
+      text-decoration: underline;
+      cursor: pointer;
+      border: none;
+    }
+
+    /* STEP 2: PUERTA DESBLOQUEADA Y BOTON DE REGALO */
+    #step-door {
+      display: none;
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    .door-icon {
+      font-size: 4.5rem;
+      margin: 15px 0;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* STEP 3: ANIMACION DIBUJO */
+    #step-drawing {
+      display: none;
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    .canvas-container {
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.03), 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    svg#drawing-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .drawn-path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawLine 3.5s ease-in-out forwards;
+    }
+
+    @keyframes drawLine {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .fade-in-element {
+      opacity: 0;
+      animation: simpleFade 1.5s ease forwards;
+    }
+
+    @keyframes simpleFade {
+      to { opacity: 1; }
+    }
+
+    /* CARTA FINAL */
+    #letter-box {
+      display: none;
+      margin-top: 25px;
+      background: #fff8fc;
+      border: 2px dashed #f1789e;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    #letter-box h2 {
+      font-family: 'Caveat', cursive;
+      font-size: 2rem;
+      color: #d85c8a;
+      margin-bottom: 8px;
+    }
+
+    #letter-box p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #5a4b60;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating Hearts */
+    .heart {
+      position: fixed;
+      color: #ff6b8b;
+      font-size: 20px;
+      pointer-events: none;
+      animation: floatUp 4s linear infinite;
+      z-index: 100;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- PASO 1: PUZZLE DESBLOQUEABLE -->
+    <div id="step-puzzle">
+      <h1>🔓 La Puerta Secreta</h1>
+      <p class="sub">Ordena los números del 1 al 8 para abrir el candado de tu regalo.</p>
+      
+      <div class="puzzle-grid" id="grid"></div>
+      
+      <button class="btn-secondary" onclick="unlockDoor()">¿Muy difícil? Desbloquear de todos modos ✨</button>
+    </div>
+
+    <!-- PASO 2: PUERTA DESBLOQUEADA CON BOTÓN -->
+    <div id="step-door">
+      <h1>✨ ¡Puerta Desbloqueada! ✨</h1>
+      <p class="sub">Has abierto el cerrojo de mi corazón. Presiona el botón para descubrir tu sorpresa.</p>
+      
+      <div class="door-icon">🎁</div>
+      
+      <button class="btn" onclick="startSurprise()">✨ Abrir mi regalo ✨</button>
+    </div>
+
+    <!-- PASO 3: DIBUJO ANIMADO Y CARTA -->
+    <div id="step-drawing">
+      <h1 id="drawing-title">Dibujando nuestro amor... 🎨</h1>
+      
+      <div class="canvas-container">
+        <svg id="drawing-svg" viewBox="0 0 400 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Fondo Suave -->
+          <rect width="400" height="450" fill="#ffffff" rx="15"/>
+
+          <!-- Corazón flotante Izquierda -->
+          <path class="drawn-path" d="M 80 170 C 80 150, 60 140, 50 155 C 40 140, 20 150, 20 170 C 20 190, 50 210, 50 220 C 50 210, 80 190, 80 170 Z" stroke="#ff3366" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="animation-delay: 0s;"/>
+
+          <!-- Corazón flotante Arriba -->
+          <path class="drawn-path" d="M 190 70 C 190 50, 170 40, 160 55 C 150 40, 130 50, 130 70 C 130 90, 160 110, 160 120 C 160 110, 190 90, 190 70 Z" stroke="#ff3366" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="animation-delay: 0.8s;"/>
+
+          <!-- Corazón flotante Derecha -->
+          <path class="drawn-path" d="M 360 210 C 360 190, 340 180, 330 195 C 320 180, 300 190, 300 210 C 300 230, 330 250, 330 260 C 330 250, 360 230, 360 210 Z" stroke="#ff3366" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="animation-delay: 1.5s;"/>
+
+          <!-- CUERPOS Y SILUETAS (LINEAS CRAYÓN) -->
+          <!-- Espalda y hombro del chico -->
+          <path class="drawn-path" d="M 230 250 C 270 260, 310 290, 325 350" stroke="#2c221e" stroke-width="5" stroke-linecap="round" style="animation-delay: 2s;"/>
+
+          <!-- Pelo rizado del chico (Múltiples rizos) -->
+          <path class="drawn-path" d="M 160 180 C 150 140, 180 110, 220 110 C 260 110, 300 130, 300 180 C 310 210, 280 240, 250 240" stroke="#3d2314" stroke-width="6" stroke-linecap="round" style="animation-delay: 2.8s;"/>
+          
+          <path class="drawn-path" d="M 175 145 C 190 120, 230 125, 250 140 C 270 150, 285 180, 270 210" stroke="#3d2314" stroke-width="5" stroke-linecap="round" style="animation-delay: 3.3s;"/>
+
+          <!-- Cara del chico tocando la frente -->
+          <path class="drawn-path" d="M 200 210 C 220 215, 235 210, 245 200" stroke="#2c221e" stroke-width="4" stroke-linecap="round" style="animation-delay: 4s;"/>
+
+          <!-- Pelo Rizado Largo de la Chica -->
+          <path class="drawn-path" d="M 170 210 C 140 180, 100 210, 90 260 C 80 300, 100 350, 120 380" stroke="#4a2c11" stroke-width="6" stroke-linecap="round" style="animation-delay: 4.5s;"/>
+          <path class="drawn-path" d="M 185 225 C 150 210, 110 240, 115 310 C 120 350, 140 370, 155 390" stroke="#4a2c11" stroke-width="5" stroke-linecap="round" style="animation-delay: 5s;"/>
+          <path class="drawn-path" d="M 150 230 C 125 260, 135 320, 160 370" stroke="#3d2314" stroke-width="5" stroke-linecap="round" style="animation-delay: 5.5s;"/>
+
+          <!-- Cara de la chica sonriendo -->
+          <path class="drawn-path" d="M 160 250 C 170 270, 195 270, 205 250" stroke="#2c221e" stroke-width="4" stroke-linecap="round" style="animation-delay: 6s;"/>
+          <!-- Ojos cerrados de felicidad -->
+          <path class="drawn-path" d="M 165 240 Q 172 232 180 240" stroke="#2c221e" stroke-width="4" stroke-linecap="round" style="animation-delay: 6.3s;"/>
+          <path class="drawn-path" d="M 190 240 Q 198 232 205 240" stroke="#2c221e" stroke-width="4" stroke-linecap="round" style="animation-delay: 6.5s;"/>
+
+          <!-- Sonrojos en las mejillas (Aparecen al final) -->
+          <ellipse class="fade-in-element" cx="160" cy="252" rx="10" ry="6" fill="#ffb3c1" style="animation-delay: 7.2s;"/>
+          <ellipse class="fade-in-element" cx="210" cy="245" rx="10" ry="6" fill="#ffb3c1" style="animation-delay: 7.2s;"/>
+        </svg>
+      </div>
+
+      <!-- CARTA ROMÁNTICA -->
+      <div id="letter-box">
+        <h2>Para el amor de mi vida ❤️️</h2>
+        <p>
+          Cada día a tu lado es mi momento favorito. Gracias por ser mi lugar seguro, por tus besos, tu paciencia y por hacerme sonreír siempre.<br><br>
+          ¡Te amo con todo mi corazón! ✨
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    /* LÓGICA DEL PUZZLE (1 al 8) */
+    const board = [1, 2, 3, 4, 5, 6, 7, 0, 8]; // Casi resuelto para que sea divertido
+    const grid = document.getElementById('grid');
+
+    function renderPuzzle() {
+      grid.innerHTML = '';
+      board.forEach((val, idx) => {
+        const tile = document.createElement('div');
+        tile.className = 'tile' + (val === 0 ? ' empty' : '');
+        tile.innerText = val !== 0 ? val : '';
+        tile.onclick = () => moveTile(idx);
+        grid.appendChild(tile);
+      });
+    }
+
+    function moveTile(idx) {
+      const emptyIdx = board.indexOf(0);
+      const validMoves = [idx - 1, idx + 1, idx - 3, idx + 3];
+      
+      if (validMoves.includes(emptyIdx)) {
+        // Validar bordes horizontales
+        if ((idx % 3 === 0 && emptyIdx === idx - 1) || (idx % 3 === 2 && emptyIdx === idx + 1)) return;
+        
+        [board[idx], board[emptyIdx]] = [board[emptyIdx], board[idx]];
+        renderPuzzle();
+        checkWin();
+      }
+    }
+
+    function checkWin() {
+      const winState = [1, 2, 3, 4, 5, 6, 7, 8, 0];
+      if (board.every((val, index) => val === winState[index])) {
+        setTimeout(unlockDoor, 400);
+      }
+    }
+
+    function unlockDoor() {
+      document.getElementById('step-puzzle').style.display = 'none';
+      document.getElementById('step-door').style.display = 'block';
+    }
+
+    /* INICIAR ANIMACIÓN Y MÚSICA */
+    function startSurprise() {
+      document.getElementById('step-door').style.display = 'none';
+      document.getElementById('step-drawing').style.display = 'block';
+      
+      playRomanticMelody();
+      startHeartRain();
+
+      // Mostrar la carta cuando el dibujo termine de trazarse (7.5 segundos)
+      setTimeout(() => {
+        document.getElementById('letter-box').style.display = 'block';
+        document.getElementById('drawing-title').innerText = "¡Siempre juntos! 🥰";
+      }, 7500);
+    }
+
+    /* MÚSICA CON SINTETIZADOR WEB AUDIO (Sin enlaces externos rotos) */
+    function playRomanticMelody() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const notes = [261.63, 329.63, 392.00, 523.25, 392.00, 329.63]; // Melodía dulce
+        let now = ctx.currentTime;
+        
+        for (let loop = 0; loop < 5; loop++) {
+          notes.forEach((freq) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now);
+            
+            gain.gain.setValueAtTime(0.08, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+            
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            
+            osc.start(now);
+            osc.stop(now + 0.8);
+            
+            now += 0.5;
+          });
+        }
+      } catch (e) {
+        console.log("Audio no soportado autómaticamente");
+      }
+    }
+
+    /* LLUVIA DE CORAZONES */
+    function startHeartRain() {
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = ['❤️', '💖', '✨', '💕'][Math.floor(Math.random() * 4)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        document.body.appendChild(heart);
+        
+        setTimeout(() => heart.remove(), 4000);
+      }, 400);
+    }
+
+    renderPuzzle();
+  </script>
+</body>
+</html>
