@@ -50,7 +50,7 @@
       margin-bottom: 18px;
     }
 
-    /* PASO 1: PUZZLE DE IMAGEN */
+    /* PASO 1: PUZZLE */
     #step-puzzle {
       display: block;
     }
@@ -58,7 +58,7 @@
     .puzzle-board {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 5px;
+      gap: 6px;
       width: 270px;
       height: 270px;
       margin: 0 auto 15px auto;
@@ -136,21 +136,41 @@
       animation: fadeIn 0.8s ease forwards;
     }
 
-    .canvas-container {
+    .illustration-box {
       width: 100%;
       max-width: 360px;
       margin: 0 auto;
       background: #ffffff;
       border-radius: 20px;
-      padding: 10px;
+      padding: 15px;
       box-shadow: inset 0 0 10px rgba(0,0,0,0.03), 0 8px 20px rgba(0,0,0,0.05);
+      position: relative;
     }
 
-    canvas {
+    /* SVG ANIMADO CON TEXTURA */
+    svg#art-svg {
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 12px;
+    }
+
+    .stroke-path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawLine 2.5s ease-in-out forwards;
+    }
+
+    .fade-fill {
+      opacity: 0;
+      animation: fadeInFill 1.2s ease forwards;
+    }
+
+    @keyframes drawLine {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes fadeInFill {
+      to { opacity: 1; }
     }
 
     /* CARTA FINAL */
@@ -189,7 +209,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Corazones Flotantes */
     .heart {
       position: fixed;
       color: #ff6b8b;
@@ -231,10 +250,60 @@
 
     <!-- PASO 3: DIBUJO Y CARTA -->
     <div id="step-drawing">
-      <h1 id="drawing-title">un dibujito para mi amor ❤️</h1>
+      <h1>un dibujito para mi amor ❤️</h1>
       
-      <div class="canvas-container">
-        <canvas id="drawingCanvas" width="400" height="420"></canvas>
+      <div class="illustration-box">
+        <svg id="art-svg" viewBox="0 0 400 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Filtro de textura Crayón/Lápiz -->
+          <defs>
+            <filter id="crayon-filter">
+              <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="2" result="noise" />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+          </defs>
+
+          <!-- Corazón Izquierda -->
+          <path class="stroke-path" style="animation-delay: 0s;" stroke="#e63946" stroke-width="4" stroke-linecap="round" stroke-dasharray="3,3" filter="url(#crayon-filter)"
+            d="M 75,170 C 50,130 15,160 45,195 C 65,215 75,230 75,230 C 75,230 85,215 105,195 C 135,160 100,130 75,170 Z" />
+
+          <!-- Corazón Arriba -->
+          <path class="stroke-path" style="animation-delay: 0.8s;" stroke="#e63946" stroke-width="4" stroke-linecap="round" stroke-dasharray="3,3" filter="url(#crayon-filter)"
+            d="M 200,65 C 180,30 150,55 175,85 C 190,100 200,112 200,112 C 200,112 210,100 225,85 C 250,55 220,30 200,65 Z" />
+
+          <!-- Corazón Derecha -->
+          <path class="stroke-path" style="animation-delay: 1.5s;" stroke="#e63946" stroke-width="4" stroke-linecap="round" stroke-dasharray="3,3" filter="url(#crayon-filter)"
+            d="M 335,190 C 315,155 285,180 310,210 C 325,225 335,237 335,237 C 335,237 345,225 360,210 C 385,180 355,155 335,190 Z" />
+
+          <!-- CORTES DE PELO Y SILUETA DEL CHICO (Rizado abundante) -->
+          <g filter="url(#crayon-filter)" stroke="#2b1a0e" stroke-width="5" stroke-linecap="round">
+            <!-- Rizos Cabeza Chico -->
+            <path class="stroke-path" style="animation-delay: 2.2s;" d="M 170,160 C 150,130 180,95 220,100 C 260,100 300,120 300,165 C 305,195 285,215 260,215" />
+            <path class="stroke-path" style="animation-delay: 2.6s;" d="M 185,135 C 200,115 235,115 255,130 C 275,145 285,175 270,200" />
+            <path class="stroke-path" style="animation-delay: 3.0s;" d="M 205,110 C 225,95 255,105 275,125" />
+            <!-- Espalda y Cuello Chico -->
+            <path class="stroke-path" style="animation-delay: 3.4s;" d="M 245,215 C 275,230 310,260 325,310 L 340,370" />
+            <!-- Frente beso -->
+            <path class="stroke-path" style="animation-delay: 3.8s;" d="M 210,195 C 225,200 235,195 245,185" />
+          </g>
+
+          <!-- PELO Y CARA DE LA CHICA (Rizado largo tupido) -->
+          <g filter="url(#crayon-filter)" stroke="#3a1e08" stroke-width="5" stroke-linecap="round">
+            <!-- Rizos abundantes Chica -->
+            <path class="stroke-path" style="animation-delay: 4.3s;" d="M 180,190 C 140,160 95,195 90,250 C 80,300 95,350 120,390" />
+            <path class="stroke-path" style="animation-delay: 4.7s;" d="M 195,205 C 155,180 115,220 110,285 C 105,335 125,370 145,405" />
+            <path class="stroke-path" style="animation-delay: 5.1s;" d="M 160,210 C 130,230 125,290 140,350 C 150,380 165,410 175,420" />
+            <path class="stroke-path" style="animation-delay: 5.5s;" d="M 135,240 C 115,275 130,335 155,390" />
+            <!-- Sonrisa Chica -->
+            <path class="stroke-path" style="animation-delay: 5.9s;" stroke="#1a1a1a" stroke-width="4" d="M 160,240 C 175,260 200,260 210,240" />
+            <!-- Ojitos cerrados felices -->
+            <path class="stroke-path" style="animation-delay: 6.2s;" stroke="#1a1a1a" stroke-width="3.5" d="M 165,225 C 172,218 180,225 180,225" />
+            <path class="stroke-path" style="animation-delay: 6.4s;" stroke="#1a1a1a" stroke-width="3.5" d="M 192,225 C 200,218 207,225 207,225" />
+          </g>
+
+          <!-- Mejillas Sonrojadas -->
+          <ellipse class="fade-fill" style="animation-delay: 6.8s;" cx="158" cy="242" rx="12" ry="7" fill="#ffb3c1" />
+          <ellipse class="fade-fill" style="animation-delay: 6.8s;" cx="212" cy="238" rx="12" ry="7" fill="#ffb3c1" />
+        </svg>
       </div>
 
       <!-- CARTA ROMÁNTICA -->
@@ -247,17 +316,14 @@
   </div>
 
   <script>
-    /* --- LÓGICA DEL PUZZLE CON IMAGEN GENERADA EN CANVAS --- */
+    /* PUZZLE CON IMAGEN */
     const puzzleBoard = document.getElementById('puzzle-board');
-    let pieces = [0, 1, 2, 3, 4, 5, 6, 8, 7]; // Desordenado pero solucionable
+    let pieces = [0, 1, 2, 3, 4, 5, 6, 8, 7];
 
-    // Generar imagen para el puzzle mediante canvas
     const imgCanvas = document.createElement('canvas');
-    imgCanvas.width = 300;
-    imgCanvas.height = 300;
+    imgCanvas.width = 300; imgCanvas.height = 300;
     const imgCtx = imgCanvas.getContext('2d');
     
-    // Dibujar corazón lindo en la imagen del puzzle
     imgCtx.fillStyle = '#ffeef5';
     imgCtx.fillRect(0, 0, 300, 300);
     imgCtx.fillStyle = '#ff6b8b';
@@ -316,126 +382,48 @@
 
     renderPuzzle();
 
-    /* --- INICIAR SORPRESA --- */
+    /* INICIAR SORPRESA */
     function startSurprise() {
       document.getElementById('step-door').style.display = 'none';
       document.getElementById('step-drawing').style.display = 'block';
       
       playFlyMeToTheMoon();
       startHeartRain();
-      animateDrawing();
-    }
 
-    /* --- DIBUJO ANIMADO TRAZO A TRAZO (CANVAS) --- */
-    function animateDrawing() {
-      const canvas = document.getElementById('drawingCanvas');
-      const ctx = canvas.getContext('2d');
-      ctx.lineWidth = 4;
-      ctx.lineCap = 'round';
-
-      // Definición de trazos exactos para la parejita
-      const paths = [
-        // Corazón Izquierda
-        { color: '#e63946', delay: 0, points: [{x:60,y:140},{x:50,y:125},{x:40,y:140},{x:60,y:170},{x:80,y:140},{x:70,y:125},{x:60,y:140}] },
-        // Corazón Arriba
-        { color: '#e63946', delay: 600, points: [{x:200,y:70},{x:185,y:50},{x:170,y:70},{x:200,y:105},{x:230,y:70},{x:215,y:50},{x:200,y:70}] },
-        // Corazón Derecha
-        { color: '#e63946', delay: 1200, points: [{x:340,y:180},{x:330,y:165},{x:320,y:180},{x:340,y:210},{x:360,y:180},{x:350,y:165},{x:340,y:180}] },
-        
-        // Pelo Chico (Rizos superiores)
-        { color: '#3a2312', delay: 1800, points: [{x:180,y:150},{x:170,y:130},{x:190,y:110},{x:220,y:105},{x:250,y:115},{x:270,y:135},{x:280,y:160},{x:270,y:185},{x:250,y:200},{x:230,y:200}] },
-        { color: '#3a2312', delay: 2400, points: [{x:190,y:130},{x:210,y:120},{x:240,y:125},{x:260,y:145},{x:265,y:170}] },
-        
-        // Espalda/Cuerpo del chico
-        { color: '#2b2d42', delay: 3000, points: [{x:240,y:210},{x:270,y:225},{x:300,y:250},{x:315,y:300},{x:325,y:350}] },
-
-        // Pelo Largo y Rizado de la Chica
-        { color: '#4a2c11', delay: 3600, points: [{x:180,y:180},{x:150,y:160},{x:120,y:180},{x:100,y:220},{x:90,y:270},{x:100,y:320},{x:120,y:360},{x:145,y:390}] },
-        { color: '#4a2c11', delay: 4200, points: [{x:160,y:190},{x:130,y:200},{x:110,y:240},{x:115,y:290},{x:130,y:340},{x:155,y:385}] },
-        { color: '#4a2c11', delay: 4800, points: [{x:140,y:210},{x:125,y:250},{x:135,y:310},{x:165,y:370}] },
-
-        // Carita y Sonrisa de la Chica
-        { color: '#2b2d42', delay: 5400, points: [{x:155,y:235},{x:170,y:255},{x:195,y:255},{x:210,y:235}] },
-        // Ojitos de felicidad (Chica)
-        { color: '#2b2d42', delay: 6000, points: [{x:165,y:225},{x:172,y:218},{x:180,y:225}] },
-        { color: '#2b2d42', delay: 6200, points: [{x:190,y:225},{x:198,y:218},{x:205,y:225}] }
-      ];
-
-      paths.forEach(p => {
-        setTimeout(() => {
-          drawSmoothPath(ctx, p.points, p.color);
-        }, p.delay);
-      });
-
-      // Sonrojo y Carta al finalizar
       setTimeout(() => {
-        // Mejillas rosadas
-        ctx.fillStyle = 'rgba(255, 154, 162, 0.6)';
-        ctx.beginPath(); ctx.arc(160, 235, 10, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.arc(210, 230, 10, 0, Math.PI * 2); ctx.fill();
-
-        // Mostrar la carta abajo
         document.getElementById('letter-box').style.display = 'block';
-      }, 6800);
+      }, 7200);
     }
 
-    function drawSmoothPath(ctx, points, color) {
-      ctx.strokeStyle = color;
-      let i = 0;
-      function step() {
-        if (i < points.length - 1) {
-          ctx.beginPath();
-          ctx.moveTo(points[i].x, points[i].y);
-          ctx.lineTo(points[i+1].x, points[i+1].y);
-          ctx.stroke();
-          i++;
-          requestAnimationFrame(step);
-        }
-      }
-      step();
-    }
-
-    /* --- MÚSICA INSTRUMENTAL ("Fly Me to the Moon" Melody) --- */
+    /* MÚSICA */
     function playFlyMeToTheMoon() {
       try {
         const AudioCtx = window.AudioContext || window.webkitAudioContext;
         if (!AudioCtx) return;
         const ctx = new AudioCtx();
-        
-        // Notas aproximadas de la melodía principal
         const notes = [
           {f: 329.63, d: 0.6}, {f: 293.66, d: 0.4}, {f: 261.63, d: 0.4}, {f: 246.94, d: 0.4},
           {f: 220.00, d: 0.8}, {f: 293.66, d: 0.6}, {f: 261.63, d: 0.4}, {f: 246.94, d: 0.4},
-          {f: 220.00, d: 0.4}, {f: 196.00, d: 0.8}, {f: 261.63, d: 0.6}, {f: 246.94, d: 0.4},
-          {f: 220.00, d: 0.4}, {f: 196.00, d: 0.4}, {f: 174.61, d: 0.8}
+          {f: 220.00, d: 0.4}, {f: 196.00, d: 0.8}, {f: 261.63, d: 0.6}, {f: 246.94, d: 0.4}
         ];
-
         let time = ctx.currentTime + 0.1;
-
         notes.forEach(note => {
           const osc = ctx.createOscillator();
           const gain = ctx.createGain();
-
-          osc.type = 'triangle'; // Sonido suave tipo piano/flauta
+          osc.type = 'triangle';
           osc.frequency.setValueAtTime(note.f, time);
-
           gain.gain.setValueAtTime(0.12, time);
           gain.gain.exponentialRampToValueAtTime(0.001, time + note.d);
-
           osc.connect(gain);
           gain.connect(ctx.destination);
-
           osc.start(time);
           osc.stop(time + note.d);
-
           time += note.d;
         });
-      } catch (e) {
-        console.log('Audio no iniciado');
-      }
+      } catch (e) {}
     }
 
-    /* --- LLUVIA DE CORAZONES --- */
+    /* CORAZONES FLOTANTES */
     function startHeartRain() {
       setInterval(() => {
         const heart = document.createElement('div');
@@ -444,7 +432,6 @@
         heart.style.left = Math.random() * 100 + 'vw';
         heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
         document.body.appendChild(heart);
-        
         setTimeout(() => heart.remove(), 4000);
       }, 400);
     }
