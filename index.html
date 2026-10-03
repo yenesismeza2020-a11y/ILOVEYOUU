@@ -3,12 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Un dibujito para mi amor ❤️</title>
-  <!-- Google Fonts: Caveat & Poppins -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
+  <title>Un regalito para mi amor ❤️️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -17,46 +13,44 @@
     }
 
     body {
-      background: linear-gradient(135deg, #ffeef8 0%, #f4e8ff 50%, #ffeaf3 100%);
+      background: linear-gradient(135deg, #ffeef8 0%, #f0e6ff 100%);
       font-family: 'Poppins', sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px 12px;
+      padding: 20px;
       color: #4a3e4e;
       overflow-x: hidden;
     }
 
-    .card-container {
+    .container {
       width: 100%;
       max-width: 480px;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(12px);
-      border-radius: 28px;
-      padding: 28px 22px;
-      box-shadow: 0 20px 45px rgba(216, 92, 138, 0.18), 0 5px 15px rgba(0, 0, 0, 0.03);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 25px 20px;
+      box-shadow: 0 15px 35px rgba(210, 140, 180, 0.2);
       text-align: center;
       position: relative;
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      transition: all 0.4s ease;
     }
 
     h1 {
       font-family: 'Caveat', cursive;
-      font-size: 2.3rem;
+      font-size: 2.2rem;
       color: #d85c8a;
-      margin-bottom: 8px;
-      line-height: 1.2;
+      margin-bottom: 10px;
     }
 
-    p.sub-text {
-      font-size: 0.92rem;
-      color: #7b6a82;
-      margin-bottom: 20px;
+    p.sub {
+      font-size: 0.9rem;
+      color: #7a6a80;
+      margin-bottom: 18px;
     }
 
+    /* PASO 1: PUZZLE */
     #step-puzzle {
       display: block;
     }
@@ -67,286 +61,210 @@
       gap: 6px;
       width: 270px;
       height: 270px;
-      margin: 0 auto 18px auto;
-      background: #ffdbe9;
-      padding: 8px;
-      border-radius: 20px;
-      box-shadow: inset 0 2px 6px rgba(0,0,0,0.06), 0 10px 25px rgba(216, 92, 138, 0.15);
+      margin: 0 auto 15px auto;
+      background: #ffd6e7;
+      padding: 6px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
     }
 
-    .puzzle-tile {
-      width: 80px;
-      height: 80px;
-      border-radius: 10px;
+    .piece {
+      width: 82px;
+      height: 82px;
+      border-radius: 8px;
       cursor: pointer;
       user-select: none;
-      transition: transform 0.18s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.18s;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+      transition: transform 0.15s ease, opacity 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    .puzzle-tile:hover {
-      transform: scale(0.97);
-    }
-
-    .puzzle-tile.empty {
-      background: rgba(255, 255, 255, 0.35) !important;
-      box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+    .piece.empty {
+      background: rgba(255, 255, 255, 0.3) !important;
+      box-shadow: none;
       cursor: default;
     }
 
-    .btn-main {
+    .btn {
       background: linear-gradient(135deg, #ff7597 0%, #d85c8a 100%);
-      color: #ffffff;
+      color: white;
       border: none;
-      padding: 14px 32px;
+      padding: 12px 28px;
       font-size: 1.05rem;
       font-weight: 600;
       border-radius: 50px;
       cursor: pointer;
-      box-shadow: 0 8px 22px rgba(216, 92, 138, 0.38);
+      box-shadow: 0 6px 18px rgba(216, 92, 138, 0.35);
       transition: all 0.3s ease;
       font-family: 'Poppins', sans-serif;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 10px;
     }
 
-    .btn-main:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 12px 28px rgba(216, 92, 138, 0.5);
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(216, 92, 138, 0.5);
     }
 
-    .btn-main:active {
-      transform: translateY(0) scale(0.98);
-    }
-
-    .btn-skip {
+    .btn-secondary {
       background: transparent;
-      color: #a48ba8;
-      font-size: 0.85rem;
-      margin-top: 14px;
-      text-decoration: none;
+      color: #9d8aa5;
+      font-size: 0.82rem;
+      margin-top: 10px;
+      text-decoration: underline;
       cursor: pointer;
       border: none;
-      padding: 6px 12px;
-      border-radius: 12px;
-      transition: all 0.2s;
-      display: block;
-      width: 100%;
     }
 
-    .btn-skip:hover {
-      color: #d85c8a;
-      background: rgba(255, 235, 245, 0.5);
-    }
-
+    /* PASO 2: PUERTA DESBLOQUEADA */
     #step-door {
       display: none;
-      animation: fadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: fadeIn 0.8s ease forwards;
     }
 
-    .door-wrapper {
-      font-size: 4.8rem;
-      margin: 20px 0;
-      animation: bouncePulse 2s infinite ease-in-out;
-      display: inline-block;
+    .door-icon {
+      font-size: 4rem;
+      margin: 15px 0;
+      animation: pulse 2s infinite;
     }
 
-    @keyframes bouncePulse {
-      0%, 100% { transform: scale(1) translateY(0); }
-      50% { transform: scale(1.12) translateY(-8px); }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
+    /* PASO 3: DIBUJO Y CARTA */
     #step-drawing {
       display: none;
       animation: fadeIn 0.8s ease forwards;
     }
 
-    .drawing-card {
+    .art-container {
       width: 100%;
-      background: #ffffff;
-      border-radius: 22px;
-      padding: 16px;
-      box-shadow: inset 0 0 12px rgba(0,0,0,0.02), 0 10px 25px rgba(0,0,0,0.04);
-      margin: 12px 0 20px 0;
-      position: relative;
-    }
-
-    /* SVG Drawing Styling */
-    svg#couple-svg {
-      width: 100%;
-      max-width: 330px;
-      height: auto;
-      display: block;
+      max-width: 320px;
+      height: 380px;
       margin: 0 auto;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.03), 0 8px 20px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Stroke-dashoffset animation */
-    .draw-path {
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-      animation: animateStroke 2.2s ease-in-out forwards;
+    /* Dibujo con animación de revelado */
+    .art-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      clip-path: circle(0% at 50% 50%);
+      transition: clip-path 4s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    .heart-path {
-      stroke-dasharray: 400;
-      stroke-dashoffset: 400;
-      animation: animateStroke 1.5s ease-in-out forwards;
+    .art-image.revealed {
+      clip-path: circle(150% at 50% 50%);
     }
 
-    .fade-element {
-      opacity: 0;
-      animation: fadeInSoft 1s ease forwards;
-    }
-
-    @keyframes animateStroke {
-      to { stroke-dashoffset: 0; }
-    }
-
-    @keyframes fadeInSoft {
-      to { opacity: 1; }
-    }
-
-    /* Letter Box */
+    /* CARTA FINAL */
     #letter-box {
       display: none;
-      margin-top: 18px;
+      margin-top: 20px;
       background: #fff8fc;
-      border: 2px dashed #f591b3;
-      border-radius: 20px;
-      padding: 22px 18px;
+      border: 2px dashed #f1789e;
+      border-radius: 16px;
+      padding: 18px;
       text-align: center;
-      animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: fadeInUp 1s ease forwards;
     }
 
     #letter-box h2 {
       font-family: 'Caveat', cursive;
-      font-size: 2.1rem;
+      font-size: 1.9rem;
       color: #d85c8a;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     #letter-box p {
-      font-size: 0.98rem;
-      line-height: 1.6;
-      color: #534358;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #5a4b60;
       font-weight: 500;
     }
 
-    /* Keyframe Animations */
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.96); }
+      from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(22px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Floating Hearts Background Animation */
-    .floating-heart {
+    .heart {
       position: fixed;
-      font-size: 22px;
+      color: #ff6b8b;
+      font-size: 20px;
       pointer-events: none;
-      animation: floatHeart 4.5s linear infinite;
-      z-index: 999;
-      filter: drop-shadow(0 2px 4px rgba(255, 100, 150, 0.3));
+      animation: floatUp 4s linear infinite;
+      z-index: 100;
     }
 
-    @keyframes floatHeart {
-      0% { transform: translateY(105vh) scale(0.3) rotate(0deg); opacity: 1; }
-      50% { opacity: 0.85; }
-      100% { transform: translateY(-10vh) scale(1.2) rotate(25deg); opacity: 0; }
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
     }
   </style>
 </head>
 <body>
 
-  <div class="card-container">
+  <div class="container">
     
     <!-- PASO 1: PUZZLE -->
     <div id="step-puzzle">
       <h1>🔓 La Puerta Secreta</h1>
-      <p class="sub-text">Ordena las piezas para desbloquear tu regalo de amor</p>
+      <p class="sub">Arma el rompecabezas para desbloquear el regalo</p>
       
       <div class="puzzle-board" id="puzzle-board"></div>
       
-      <button class="btn-skip" onclick="unlockDoor()">¿Muy difícil? Desbloquear de todos modos ✨</button>
+      <button class="btn-secondary" onclick="unlockDoor()">¿Muy difícil? Desbloquear de todos modos ✨</button>
     </div>
 
     <!-- PASO 2: PUERTA DESBLOQUEADA -->
     <div id="step-door">
       <h1>✨ ¡Puerta Desbloqueada! ✨</h1>
-      <p class="sub-text">Haz clic abajo para descubrir tu sorpresita</p>
+      <p class="sub">Presiona el botón para descubrir tu sorpresa</p>
       
-      <div class="door-wrapper">🎁</div>
+      <div class="door-icon">🎁</div>
       
-      <br>
-      <button class="btn-main" onclick="startSurprise()">✨ Abrir mi regalo ✨</button>
+      <button class="btn" onclick="startSurprise()">✨ Abrir mi regalo ✨</button>
     </div>
 
     <!-- PASO 3: DIBUJO Y CARTA -->
     <div id="step-drawing">
       <h1>un dibujito para mi amor ❤️</h1>
       
-      <div class="drawing-card">
-        <!-- SVG parejita abrazo rizado idéntico a la referencia -->
-        <svg id="couple-svg" viewBox="0 0 400 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div class="art-container">
+        <!-- SVG idéntico dibujándose -->
+        <svg id="drawing-svg" viewBox="0 0 350 400" style="width:100%; height:100%;">
+          <!-- Corazón 1 -->
+          <path class="draw-path" d="M 60 160 C 60 135 35 125 25 140 C 15 125 0 135 0 160 C 0 185 25 205 25 215 C 25 205 60 185 60 160 Z" transform="translate(40,10)" stroke="#e63946" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <!-- Corazón 2 -->
+          <path class="draw-path" d="M 60 160 C 60 135 35 125 25 140 C 15 125 0 135 0 160 C 0 185 25 205 25 215 C 25 205 60 185 60 160 Z" transform="translate(150,-90)" stroke="#e63946" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <!-- Corazón 3 -->
+          <path class="draw-path" d="M 60 160 C 60 135 35 125 25 140 C 15 125 0 135 0 160 C 0 185 25 205 25 215 C 25 205 60 185 60 160 Z" transform="translate(250,50)" stroke="#e63946" stroke-width="4" fill="none" stroke-linecap="round"/>
           
-          <!-- Corazón Izquierda -->
-          <path class="heart-path" style="animation-delay: 0.1s;" stroke="#f0436b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
-            d="M 85,160 C 60,120 20,150 50,190 C 70,210 85,225 85,225 C 85,225 100,210 120,190 C 150,150 110,120 85,160 Z" />
-
-          <!-- Corazón Arriba -->
-          <path class="heart-path" style="animation-delay: 0.7s;" stroke="#f0436b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
-            d="M 200,60 C 180,25 145,50 172,82 C 187,98 200,110 200,110 C 200,110 213,98 228,82 C 255,50 220,25 200,60 Z" />
-
-          <!-- Corazón Derecha -->
-          <path class="heart-path" style="animation-delay: 1.3s;" stroke="#f0436b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
-            d="M 315,175 C 295,135 260,160 288,198 C 303,213 315,225 315,225 C 315,225 327,213 342,198 C 370,160 335,135 315,175 Z" />
-
-          <!-- CHICO: Pelo Rizado & Cabeza inclinado abrazando -->
-          <g stroke="#3a2216" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
-            <!-- Rizos de pelo Chico -->
-            <path class="draw-path" style="animation-delay: 1.9s;" d="M 180,140 C 165,115 190,90 220,95 C 250,90 280,110 285,145 C 290,175 270,195 245,200" />
-            <path class="draw-path" style="animation-delay: 2.3s;" d="M 195,120 C 215,100 250,105 270,125 C 285,140 280,170 265,190" />
-            <path class="draw-path" style="animation-delay: 2.7s;" d="M 215,98 C 235,88 260,98 275,115" />
-            
-            <!-- Silueta Espalda / Hombro Chico -->
-            <path class="draw-path" style="animation-delay: 3.1s;" d="M 235,198 C 260,210 295,240 310,290 L 325,350" />
-            <!-- Frente del chico rozando a la chica -->
-            <path class="draw-path" style="animation-delay: 3.5s;" d="M 210,180 C 222,185 230,180 238,170" />
-          </g>
-
-          <!-- CHICA: Pelo Muy Rizado Largo & Sonrisa en el pecho -->
-          <g stroke="#3a2216" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
-            <!-- Capa de Pelo Rizado 1 -->
-            <path class="draw-path" style="animation-delay: 4.0s;" d="M 175,185 C 135,160 90,195 85,250 C 80,300 95,350 125,390" />
-            <!-- Capa de Pelo Rizado 2 -->
-            <path class="draw-path" style="animation-delay: 4.4s;" d="M 190,200 C 150,180 110,215 105,280 C 100,330 120,365 145,400" />
-            <!-- Capa de Pelo Rizado 3 -->
-            <path class="draw-path" style="animation-delay: 4.8s;" d="M 160,210 C 130,230 120,285 135,340 C 145,370 160,395 170,405" />
-            <!-- Capa de Pelo Rizado 4 -->
-            <path class="draw-path" style="animation-delay: 5.2s;" d="M 130,240 C 110,275 125,330 150,385" />
-
-            <!-- Carita Feliz Chica (Sonrisa) -->
-            <path class="draw-path" style="animation-delay: 5.6s;" stroke="#20120a" stroke-width="4.5" d="M 162,230 C 175,248 198,248 208,230" />
-            <!-- Ojitos sonrientes cerrados -->
-            <path class="draw-path" style="animation-delay: 6.0s;" stroke="#20120a" stroke-width="4" d="M 166,215 C 172,208 180,215 180,215" />
-            <path class="draw-path" style="animation-delay: 6.2s;" stroke="#20120a" stroke-width="4" d="M 190,215 C 198,208 205,215 205,215" />
-          </g>
-
-          <!-- Mejillas Rosadas (Rubor) -->
-          <ellipse class="fade-element" style="animation-delay: 6.6s;" cx="158" cy="232" rx="11" ry="6" fill="#ff9eb5" />
-          <ellipse class="fade-element" style="animation-delay: 6.6s;" cx="212" cy="228" rx="11" ry="6" fill="#ff9eb5" />
+          <!-- Pareja SVG -->
+          <path class="draw-path" d="M 140 180 C 120 120 220 90 250 160 C 270 200 220 230 190 220 C 170 260 210 320 230 360" stroke="#3a2312" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path class="draw-path" d="M 160 200 C 120 180 80 230 85 300 C 90 350 120 380 140 400" stroke="#4a2c11" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path class="draw-path" d="M 130 230 C 150 255 180 255 195 235" stroke="#2b2d42" stroke-width="4" fill="none" stroke-linecap="round"/>
         </svg>
       </div>
 
-      <!-- CARTA FINAL CON EL TEXTO EXACTO SOLICITADO -->
+      <!-- CARTA ROMÁNTICA -->
       <div id="letter-box">
-        <h2>Para el amor de mi vida ❤️️</h2>
+        <h2>Para el amor de mi vida ❤️</h2>
         <p>Hoy te amo mas que ayer y menos que mañana, TE AMO MI NIÑOOO</p>
       </div>
     </div>
@@ -354,50 +272,44 @@
   </div>
 
   <script>
+    /* --- PUZZLE --- */
     const puzzleBoard = document.getElementById('puzzle-board');
-    // Solvable configuration array (0-7 pieces, 8 is empty space)
     let pieces = [0, 1, 2, 3, 4, 5, 6, 8, 7];
 
-    // Generate puzzle texture image via hidden canvas
     const imgCanvas = document.createElement('canvas');
-    imgCanvas.width = 300;
-    imgCanvas.height = 300;
+    imgCanvas.width = 300; imgCanvas.height = 300;
     const imgCtx = imgCanvas.getContext('2d');
     
-    // Draw romantic heart image on canvas for puzzle pieces
-    imgCtx.fillStyle = '#ffedf5';
+    imgCtx.fillStyle = '#ffeef5';
     imgCtx.fillRect(0, 0, 300, 300);
-    imgCtx.fillStyle = '#ff6584';
+    imgCtx.fillStyle = '#ff6b8b';
     imgCtx.beginPath();
-    imgCtx.arc(110, 120, 55, Math.PI, 0, false);
-    imgCtx.arc(190, 120, 55, Math.PI, 0, false);
-    imgCtx.lineTo(150, 225);
+    imgCtx.arc(110, 120, 50, Math.PI, 0, false);
+    imgCtx.arc(190, 120, 50, Math.PI, 0, false);
+    imgCtx.lineTo(150, 220);
     imgCtx.closePath();
     imgCtx.fill();
-    
     imgCtx.fillStyle = '#ffffff';
-    imgCtx.font = 'bold 24px Poppins, sans-serif';
+    imgCtx.font = 'bold 22px sans-serif';
     imgCtx.textAlign = 'center';
-    imgCtx.fillText('TE AMO', 150, 138);
-
-    const puzzleImgUrl = imgCanvas.toDataURL();
+    imgCtx.fillText('TE AMO', 150, 140);
 
     function renderPuzzle() {
       puzzleBoard.innerHTML = '';
       pieces.forEach((pieceIdx, currentPos) => {
-        const tile = document.createElement('div');
-        tile.className = 'puzzle-tile' + (pieceIdx === 8 ? ' empty' : '');
+        const div = document.createElement('div');
+        div.className = 'piece' + (pieceIdx === 8 ? ' empty' : '');
 
         if (pieceIdx !== 8) {
           const row = Math.floor(pieceIdx / 3);
           const col = pieceIdx % 3;
-          tile.style.backgroundImage = `url(${puzzleImgUrl})`;
-          tile.style.backgroundSize = '240px 240px';
-          tile.style.backgroundPosition = `-${col * 80}px -${row * 80}px`;
+          div.style.backgroundImage = `url(${imgCanvas.toDataURL()})`;
+          div.style.backgroundSize = '250px 250px';
+          div.style.backgroundPosition = `-${col * 83}px -${row * 83}px`;
         }
 
-        tile.onclick = () => movePiece(currentPos);
-        puzzleBoard.appendChild(tile);
+        div.onclick = () => movePiece(currentPos);
+        puzzleBoard.appendChild(div);
       });
     }
 
@@ -406,9 +318,7 @@
       const validMoves = [pos - 1, pos + 1, pos - 3, pos + 3];
 
       if (validMoves.includes(emptyPos)) {
-        // Prevent wrapping around grid sides
         if ((pos % 3 === 0 && emptyPos === pos - 1) || (pos % 3 === 2 && emptyPos === pos + 1)) return;
-        
         [pieces[pos], pieces[emptyPos]] = [pieces[emptyPos], pieces[pos]];
         renderPuzzle();
         checkPuzzleWin();
@@ -417,7 +327,7 @@
 
     function checkPuzzleWin() {
       if (pieces.every((val, idx) => val === idx)) {
-        setTimeout(unlockDoor, 350);
+        setTimeout(unlockDoor, 300);
       }
     }
 
@@ -428,84 +338,75 @@
 
     renderPuzzle();
 
+    /* --- INICIAR SORPRESA --- */
     function startSurprise() {
       document.getElementById('step-door').style.display = 'none';
       document.getElementById('step-drawing').style.display = 'block';
       
-      playFlyMeToTheMoonSynth();
+      playFlyMeToTheMoon();
       startHeartRain();
+      animateSVG();
 
-      // Reveal romantic letter after drawing animation completes
       setTimeout(() => {
         document.getElementById('letter-box').style.display = 'block';
-      }, 7000);
+      }, 4500);
     }
 
-    /* Web Audio API - Synthesized 'Fly Me to the Moon' Melody */
-    function playFlyMeToTheMoonSynth() {
+    function animateSVG() {
+      const paths = document.querySelectorAll('.draw-path');
+      paths.forEach((path) => {
+        const length = path.getTotalLength();
+        path.style.strokeDasharray = length;
+        path.style.strokeDashoffset = length;
+        path.getBoundingClientRect();
+        path.style.transition = 'stroke-dashoffset 3.5s ease-in-out';
+        path.style.strokeDashoffset = '0';
+      });
+    }
+
+    /* --- MÚSICA --- */
+    function playFlyMeToTheMoon() {
       try {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        if (!AudioContext) return;
-        const ctx = new AudioContext();
-        
-        // Musical notes for "Fly Me to the Moon" main line
-        const melody = [
-          { f: 329.63, d: 0.55 }, // C5
-          { f: 293.66, d: 0.40 }, // B4
-          { f: 261.63, d: 0.40 }, // A4
-          { f: 246.94, d: 0.40 }, // G4
-          { f: 220.00, d: 0.80 }, // F4
-          { f: 293.66, d: 0.55 }, // B4
-          { f: 261.63, d: 0.40 }, // A4
-          { f: 246.94, d: 0.40 }, // G4
-          { f: 220.00, d: 0.40 }, // F4
-          { f: 196.00, d: 0.80 }, // E4
-          { f: 261.63, d: 0.55 }, // A4
-          { f: 246.94, d: 0.40 }, // G4
-          { f: 220.00, d: 0.40 }, // F4
-          { f: 196.00, d: 0.40 }, // E4
-          { f: 174.61, d: 0.90 }  // D4
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const notes = [
+          {f: 329.63, d: 0.6}, {f: 293.66, d: 0.4}, {f: 261.63, d: 0.4}, {f: 246.94, d: 0.4},
+          {f: 220.00, d: 0.8}, {f: 293.66, d: 0.6}, {f: 261.63, d: 0.4}, {f: 246.94, d: 0.4},
+          {f: 220.00, d: 0.4}, {f: 196.00, d: 0.8}, {f: 261.63, d: 0.6}, {f: 246.94, d: 0.4}
         ];
-
         let time = ctx.currentTime + 0.1;
-
-        melody.forEach(note => {
+        notes.forEach(note => {
           const osc = ctx.createOscillator();
           const gain = ctx.createGain();
-
-          osc.type = 'triangle'; // Soft acoustic instrument timbre
+          osc.type = 'triangle';
           osc.frequency.setValueAtTime(note.f, time);
-
-          gain.gain.setValueAtTime(0.15, time);
+          gain.gain.setValueAtTime(0.12, time);
           gain.gain.exponentialRampToValueAtTime(0.001, time + note.d);
-
           osc.connect(gain);
           gain.connect(ctx.destination);
-
           osc.start(time);
           osc.stop(time + note.d);
-
           time += note.d;
         });
-      } catch (e) {
-        console.log("Audio play blocked by browser policy");
-      }
+      } catch (e) {}
     }
 
+    /* --- CORAZONES FLOTANTES --- */
     function startHeartRain() {
       setInterval(() => {
         const heart = document.createElement('div');
-        heart.className = 'floating-heart';
-        heart.innerHTML = ['❤️', '💖', '✨', '💕', '💗'][Math.floor(Math.random() * 5)];
-        heart.style.left = Math.random() * 95 + 'vw';
-        heart.style.animationDuration = (Math.random() * 2 + 3.5) + 's';
+        heart.className = 'heart';
+        heart.innerHTML = ['❤️', '💖', '✨', '💕'][Math.floor(Math.random() * 4)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
         document.body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), 4500);
-      }, 350);
+        setTimeout(() => heart.remove(), 4000);
+      }, 400);
     }
   </script>
 </body>
 </html>
+   
+    
 
-  
