@@ -1192,12 +1192,7 @@ function openGift() {
    Melodía original creada con Web Audio API
 ========================================================= */
 
-let audioContext = null;
-
-let masterGain = null;
-
 let musicStarted = false;
-
 
 function startMusic() {
 
@@ -1207,169 +1202,15 @@ function startMusic() {
 
     musicStarted = true;
 
+    const music = new Audio("fly-me-to-the-moon.mp3");
 
-    const AudioContext =
-        window.AudioContext ||
-        window.webkitAudioContext;
+    music.loop = true;
 
+    music.volume = 0.28;
 
-    audioContext =
-        new AudioContext();
-
-
-    masterGain =
-        audioContext.createGain();
-
-
-    masterGain.gain.value =
-        0.055;
-
-
-    masterGain.connect(
-        audioContext.destination
-    );
-
-
-    /*
-        Melodía original.
-
-        Notas:
-        C4 D4 E4 G4
-        E4 D4 C4
-        G3 C4 D4
-        E4 G4 E4
-    */
-
-
-    const melody = [
-
-        ["C4", 0.00, 0.55],
-        ["E4", 0.60, 0.55],
-        ["G4", 1.20, 0.70],
-        ["E4", 2.00, 0.55],
-
-        ["D4", 2.60, 0.55],
-        ["C4", 3.20, 0.80],
-
-        ["G3", 4.20, 0.65],
-        ["C4", 5.00, 0.65],
-        ["D4", 5.80, 0.65],
-
-        ["E4", 6.60, 0.65],
-        ["G4", 7.40, 0.65],
-        ["E4", 8.20, 0.90],
-
-        ["D4", 9.30, 0.60],
-        ["C4", 10.00, 1.20]
-
-    ];
-
-
-    /*
-        Repetir la melodía suavemente.
-    */
-
-    const duration =
-        11.8;
-
-
-    function playNote(
-        note,
-        startTime,
-        length
-    ) {
-
-        const frequencies = {
-
-            "G3": 196.00,
-
-            "C4": 261.63,
-            "D4": 293.66,
-            "E4": 329.63,
-            "G4": 392.00
-
-        };
-
-
-        const oscillator =
-            audioContext.createOscillator();
-
-
-        const gain =
-            audioContext.createGain();
-
-
-        oscillator.type =
-            "sine";
-
-
-        oscillator.frequency.value =
-            frequencies[note];
-
-
-        oscillator.connect(gain);
-
-        gain.connect(masterGain);
-
-
-        const now =
-            audioContext.currentTime;
-
-
-        const start =
-            now + startTime;
-
-
-        gain.gain.setValueAtTime(
-            0,
-            start
-        );
-
-
-        gain.gain.linearRampToValueAtTime(
-            0.75,
-            start + 0.08
-        );
-
-
-        gain.gain.exponentialRampToValueAtTime(
-            0.001,
-            start + length
-        );
-
-
-        oscillator.start(start);
-
-        oscillator.stop(
-            start + length + 0.05
-        );
-
-    }
-
-
-    function loopMelody() {
-
-        melody.forEach(note => {
-
-            playNote(
-                note[0],
-                note[1],
-                note[2]
-            );
-
-        });
-
-
-        setTimeout(
-            loopMelody,
-            duration * 1000
-        );
-
-    }
-
-
-    loopMelody();
-
+    music.play().catch(error => {
+        console.log("No se pudo iniciar la música:", error);
+    });
 }
 
 
