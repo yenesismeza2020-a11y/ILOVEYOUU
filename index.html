@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Un Regalo Especial Para Ti ❤️</title>
+  <title>Un regalito para mi amor ❤️</title>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     * {
@@ -27,11 +27,11 @@
 
     .container {
       width: 100%;
-      max-width: 550px;
-      background: rgba(255, 255, 255, 0.92);
+      max-width: 500px;
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       border-radius: 24px;
-      padding: 28px 20px;
+      padding: 25px 20px;
       box-shadow: 0 15px 35px rgba(210, 140, 180, 0.2);
       text-align: center;
       position: relative;
@@ -39,56 +39,47 @@
 
     h1 {
       font-family: 'Caveat', cursive;
-      font-size: 2.3rem;
+      font-size: 2.2rem;
       color: #d85c8a;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     p.sub {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: #7a6a80;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
-    /* STEP 1: PUZZLE PUERTA */
+    /* PASO 1: PUZZLE DE IMAGEN */
     #step-puzzle {
       display: block;
     }
 
-    .puzzle-grid {
+    .puzzle-board {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
+      gap: 5px;
       width: 270px;
       height: 270px;
-      margin: 0 auto 20px auto;
+      margin: 0 auto 15px auto;
       background: #ffd6e7;
       padding: 6px;
       border-radius: 16px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.06);
     }
 
-    .tile {
-      background: #f1789e;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: white;
+    .piece {
+      width: 82px;
+      height: 82px;
+      border-radius: 8px;
       cursor: pointer;
       user-select: none;
-      transition: transform 0.15s ease, background-color 0.2s ease;
-      box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15);
+      transition: transform 0.15s ease, opacity 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    .tile:active {
-      transform: scale(0.95);
-    }
-
-    .tile.empty {
-      background: transparent;
+    .piece.empty {
+      background: rgba(255, 255, 255, 0.3) !important;
       box-shadow: none;
       cursor: default;
     }
@@ -116,20 +107,20 @@
       background: transparent;
       color: #9d8aa5;
       font-size: 0.82rem;
-      margin-top: 12px;
+      margin-top: 10px;
       text-decoration: underline;
       cursor: pointer;
       border: none;
     }
 
-    /* STEP 2: PUERTA DESBLOQUEADA Y BOTON DE REGALO */
+    /* PASO 2: PUERTA DESBLOQUEADA */
     #step-door {
       display: none;
       animation: fadeIn 0.8s ease forwards;
     }
 
     .door-icon {
-      font-size: 4.5rem;
+      font-size: 4rem;
       margin: 15px 0;
       animation: pulse 2s infinite;
     }
@@ -139,7 +130,7 @@
       50% { transform: scale(1.1); }
     }
 
-    /* STEP 3: ANIMACION DIBUJO */
+    /* PASO 3: DIBUJO Y CARTA */
     #step-drawing {
       display: none;
       animation: fadeIn 0.8s ease forwards;
@@ -147,64 +138,45 @@
 
     .canvas-container {
       width: 100%;
-      max-width: 380px;
+      max-width: 360px;
       margin: 0 auto;
       background: #ffffff;
       border-radius: 20px;
-      padding: 15px;
+      padding: 10px;
       box-shadow: inset 0 0 10px rgba(0,0,0,0.03), 0 8px 20px rgba(0,0,0,0.05);
     }
 
-    svg#drawing-svg {
+    canvas {
       width: 100%;
       height: auto;
       display: block;
-    }
-
-    .drawn-path {
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-      animation: drawLine 3.5s ease-in-out forwards;
-    }
-
-    @keyframes drawLine {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-
-    .fade-in-element {
-      opacity: 0;
-      animation: simpleFade 1.5s ease forwards;
-    }
-
-    @keyframes simpleFade {
-      to { opacity: 1; }
+      border-radius: 12px;
     }
 
     /* CARTA FINAL */
     #letter-box {
       display: none;
-      margin-top: 25px;
+      margin-top: 20px;
       background: #fff8fc;
       border: 2px dashed #f1789e;
       border-radius: 16px;
-      padding: 20px;
+      padding: 18px;
       text-align: center;
       animation: fadeInUp 1s ease forwards;
     }
 
     #letter-box h2 {
       font-family: 'Caveat', cursive;
-      font-size: 2rem;
+      font-size: 1.9rem;
       color: #d85c8a;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     #letter-box p {
       font-size: 0.95rem;
-      line-height: 1.6;
+      line-height: 1.5;
       color: #5a4b60;
+      font-weight: 500;
     }
 
     @keyframes fadeIn {
@@ -217,7 +189,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Floating Hearts */
+    /* Corazones Flotantes */
     .heart {
       position: fixed;
       color: #ff6b8b;
@@ -237,119 +209,103 @@
 
   <div class="container">
     
-    <!-- PASO 1: PUZZLE DESBLOQUEABLE -->
+    <!-- PASO 1: PUZZLE -->
     <div id="step-puzzle">
       <h1>🔓 La Puerta Secreta</h1>
-      <p class="sub">Ordena los números del 1 al 8 para abrir el candado de tu regalo.</p>
+      <p class="sub">Arma el rompecabezas para desbloquear el regalo</p>
       
-      <div class="puzzle-grid" id="grid"></div>
+      <div class="puzzle-board" id="puzzle-board"></div>
       
       <button class="btn-secondary" onclick="unlockDoor()">¿Muy difícil? Desbloquear de todos modos ✨</button>
     </div>
 
-    <!-- PASO 2: PUERTA DESBLOQUEADA CON BOTÓN -->
+    <!-- PASO 2: PUERTA DESBLOQUEADA -->
     <div id="step-door">
       <h1>✨ ¡Puerta Desbloqueada! ✨</h1>
-      <p class="sub">Has abierto el cerrojo de mi corazón. Presiona el botón para descubrir tu sorpresa.</p>
+      <p class="sub">Presiona el botón para descubrir tu sorpresa</p>
       
       <div class="door-icon">🎁</div>
       
       <button class="btn" onclick="startSurprise()">✨ Abrir mi regalo ✨</button>
     </div>
 
-    <!-- PASO 3: DIBUJO ANIMADO Y CARTA -->
+    <!-- PASO 3: DIBUJO Y CARTA -->
     <div id="step-drawing">
-      <h1 id="drawing-title">Dibujando nuestro amor... 🎨</h1>
+      <h1 id="drawing-title">un dibujito para mi amor ❤️</h1>
       
       <div class="canvas-container">
-        <svg id="drawing-svg" viewBox="0 0 400 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Fondo Suave -->
-          <rect width="400" height="450" fill="#ffffff" rx="15"/>
-
-          <!-- Corazón flotante Izquierda -->
-          <path class="drawn-path" d="M 80 170 C 80 150, 60 140, 50 155 C 40 140, 20 150, 20 170 C 20 190, 50 210, 50 220 C 50 210, 80 190, 80 170 Z" stroke="#ff3366" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="animation-delay: 0s;"/>
-
-          <!-- Corazón flotante Arriba -->
-          <path class="drawn-path" d="M 190 70 C 190 50, 170 40, 160 55 C 150 40, 130 50, 130 70 C 130 90, 160 110, 160 120 C 160 110, 190 90, 190 70 Z" stroke="#ff3366" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="animation-delay: 0.8s;"/>
-
-          <!-- Corazón flotante Derecha -->
-          <path class="drawn-path" d="M 360 210 C 360 190, 340 180, 330 195 C 320 180, 300 190, 300 210 C 300 230, 330 250, 330 260 C 330 250, 360 230, 360 210 Z" stroke="#ff3366" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="animation-delay: 1.5s;"/>
-
-          <!-- CUERPOS Y SILUETAS (LINEAS CRAYÓN) -->
-          <!-- Espalda y hombro del chico -->
-          <path class="drawn-path" d="M 230 250 C 270 260, 310 290, 325 350" stroke="#2c221e" stroke-width="5" stroke-linecap="round" style="animation-delay: 2s;"/>
-
-          <!-- Pelo rizado del chico (Múltiples rizos) -->
-          <path class="drawn-path" d="M 160 180 C 150 140, 180 110, 220 110 C 260 110, 300 130, 300 180 C 310 210, 280 240, 250 240" stroke="#3d2314" stroke-width="6" stroke-linecap="round" style="animation-delay: 2.8s;"/>
-          
-          <path class="drawn-path" d="M 175 145 C 190 120, 230 125, 250 140 C 270 150, 285 180, 270 210" stroke="#3d2314" stroke-width="5" stroke-linecap="round" style="animation-delay: 3.3s;"/>
-
-          <!-- Cara del chico tocando la frente -->
-          <path class="drawn-path" d="M 200 210 C 220 215, 235 210, 245 200" stroke="#2c221e" stroke-width="4" stroke-linecap="round" style="animation-delay: 4s;"/>
-
-          <!-- Pelo Rizado Largo de la Chica -->
-          <path class="drawn-path" d="M 170 210 C 140 180, 100 210, 90 260 C 80 300, 100 350, 120 380" stroke="#4a2c11" stroke-width="6" stroke-linecap="round" style="animation-delay: 4.5s;"/>
-          <path class="drawn-path" d="M 185 225 C 150 210, 110 240, 115 310 C 120 350, 140 370, 155 390" stroke="#4a2c11" stroke-width="5" stroke-linecap="round" style="animation-delay: 5s;"/>
-          <path class="drawn-path" d="M 150 230 C 125 260, 135 320, 160 370" stroke="#3d2314" stroke-width="5" stroke-linecap="round" style="animation-delay: 5.5s;"/>
-
-          <!-- Cara de la chica sonriendo -->
-          <path class="drawn-path" d="M 160 250 C 170 270, 195 270, 205 250" stroke="#2c221e" stroke-width="4" stroke-linecap="round" style="animation-delay: 6s;"/>
-          <!-- Ojos cerrados de felicidad -->
-          <path class="drawn-path" d="M 165 240 Q 172 232 180 240" stroke="#2c221e" stroke-width="4" stroke-linecap="round" style="animation-delay: 6.3s;"/>
-          <path class="drawn-path" d="M 190 240 Q 198 232 205 240" stroke="#2c221e" stroke-width="4" stroke-linecap="round" style="animation-delay: 6.5s;"/>
-
-          <!-- Sonrojos en las mejillas (Aparecen al final) -->
-          <ellipse class="fade-in-element" cx="160" cy="252" rx="10" ry="6" fill="#ffb3c1" style="animation-delay: 7.2s;"/>
-          <ellipse class="fade-in-element" cx="210" cy="245" rx="10" ry="6" fill="#ffb3c1" style="animation-delay: 7.2s;"/>
-        </svg>
+        <canvas id="drawingCanvas" width="400" height="420"></canvas>
       </div>
 
       <!-- CARTA ROMÁNTICA -->
       <div id="letter-box">
-        <h2>Para el amor de mi vida ❤️️</h2>
-        <p>
-          Cada día a tu lado es mi momento favorito. Gracias por ser mi lugar seguro, por tus besos, tu paciencia y por hacerme sonreír siempre.<br><br>
-          ¡Te amo con todo mi corazón! ✨
-        </p>
+        <h2>Para el amor de mi vida ❤️</h2>
+        <p>Hoy te amo mas que ayer y menos que mañana, TE AMO MI NIÑOOO</p>
       </div>
     </div>
 
   </div>
 
   <script>
-    /* LÓGICA DEL PUZZLE (1 al 8) */
-    const board = [1, 2, 3, 4, 5, 6, 7, 0, 8]; // Casi resuelto para que sea divertido
-    const grid = document.getElementById('grid');
+    /* --- LÓGICA DEL PUZZLE CON IMAGEN GENERADA EN CANVAS --- */
+    const puzzleBoard = document.getElementById('puzzle-board');
+    let pieces = [0, 1, 2, 3, 4, 5, 6, 8, 7]; // Desordenado pero solucionable
+
+    // Generar imagen para el puzzle mediante canvas
+    const imgCanvas = document.createElement('canvas');
+    imgCanvas.width = 300;
+    imgCanvas.height = 300;
+    const imgCtx = imgCanvas.getContext('2d');
+    
+    // Dibujar corazón lindo en la imagen del puzzle
+    imgCtx.fillStyle = '#ffeef5';
+    imgCtx.fillRect(0, 0, 300, 300);
+    imgCtx.fillStyle = '#ff6b8b';
+    imgCtx.beginPath();
+    imgCtx.arc(110, 120, 50, Math.PI, 0, false);
+    imgCtx.arc(190, 120, 50, Math.PI, 0, false);
+    imgCtx.lineTo(150, 220);
+    imgCtx.closePath();
+    imgCtx.fill();
+    imgCtx.fillStyle = '#ffffff';
+    imgCtx.font = 'bold 22px sans-serif';
+    imgCtx.textAlign = 'center';
+    imgCtx.fillText('TE AMO', 150, 140);
 
     function renderPuzzle() {
-      grid.innerHTML = '';
-      board.forEach((val, idx) => {
-        const tile = document.createElement('div');
-        tile.className = 'tile' + (val === 0 ? ' empty' : '');
-        tile.innerText = val !== 0 ? val : '';
-        tile.onclick = () => moveTile(idx);
-        grid.appendChild(tile);
+      puzzleBoard.innerHTML = '';
+      pieces.forEach((pieceIdx, currentPos) => {
+        const div = document.createElement('div');
+        div.className = 'piece' + (pieceIdx === 8 ? ' empty' : '');
+
+        if (pieceIdx !== 8) {
+          const row = Math.floor(pieceIdx / 3);
+          const col = pieceIdx % 3;
+          div.style.backgroundImage = `url(${imgCanvas.toDataURL()})`;
+          div.style.backgroundSize = '250px 250px';
+          div.style.backgroundPosition = `-${col * 83}px -${row * 83}px`;
+        }
+
+        div.onclick = () => movePiece(currentPos);
+        puzzleBoard.appendChild(div);
       });
     }
 
-    function moveTile(idx) {
-      const emptyIdx = board.indexOf(0);
-      const validMoves = [idx - 1, idx + 1, idx - 3, idx + 3];
-      
-      if (validMoves.includes(emptyIdx)) {
-        // Validar bordes horizontales
-        if ((idx % 3 === 0 && emptyIdx === idx - 1) || (idx % 3 === 2 && emptyIdx === idx + 1)) return;
-        
-        [board[idx], board[emptyIdx]] = [board[emptyIdx], board[idx]];
+    function movePiece(pos) {
+      const emptyPos = pieces.indexOf(8);
+      const validMoves = [pos - 1, pos + 1, pos - 3, pos + 3];
+
+      if (validMoves.includes(emptyPos)) {
+        if ((pos % 3 === 0 && emptyPos === pos - 1) || (pos % 3 === 2 && emptyPos === pos + 1)) return;
+        [pieces[pos], pieces[emptyPos]] = [pieces[emptyPos], pieces[pos]];
         renderPuzzle();
-        checkWin();
+        checkPuzzleWin();
       }
     }
 
-    function checkWin() {
-      const winState = [1, 2, 3, 4, 5, 6, 7, 8, 0];
-      if (board.every((val, index) => val === winState[index])) {
-        setTimeout(unlockDoor, 400);
+    function checkPuzzleWin() {
+      if (pieces.every((val, idx) => val === idx)) {
+        setTimeout(unlockDoor, 300);
       }
     }
 
@@ -358,54 +314,128 @@
       document.getElementById('step-door').style.display = 'block';
     }
 
-    /* INICIAR ANIMACIÓN Y MÚSICA */
+    renderPuzzle();
+
+    /* --- INICIAR SORPRESA --- */
     function startSurprise() {
       document.getElementById('step-door').style.display = 'none';
       document.getElementById('step-drawing').style.display = 'block';
       
-      playRomanticMelody();
+      playFlyMeToTheMoon();
       startHeartRain();
-
-      // Mostrar la carta cuando el dibujo termine de trazarse (7.5 segundos)
-      setTimeout(() => {
-        document.getElementById('letter-box').style.display = 'block';
-        document.getElementById('drawing-title').innerText = "¡Siempre juntos! 🥰";
-      }, 7500);
+      animateDrawing();
     }
 
-    /* MÚSICA CON SINTETIZADOR WEB AUDIO (Sin enlaces externos rotos) */
-    function playRomanticMelody() {
-      try {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        const notes = [261.63, 329.63, 392.00, 523.25, 392.00, 329.63]; // Melodía dulce
-        let now = ctx.currentTime;
+    /* --- DIBUJO ANIMADO TRAZO A TRAZO (CANVAS) --- */
+    function animateDrawing() {
+      const canvas = document.getElementById('drawingCanvas');
+      const ctx = canvas.getContext('2d');
+      ctx.lineWidth = 4;
+      ctx.lineCap = 'round';
+
+      // Definición de trazos exactos para la parejita
+      const paths = [
+        // Corazón Izquierda
+        { color: '#e63946', delay: 0, points: [{x:60,y:140},{x:50,y:125},{x:40,y:140},{x:60,y:170},{x:80,y:140},{x:70,y:125},{x:60,y:140}] },
+        // Corazón Arriba
+        { color: '#e63946', delay: 600, points: [{x:200,y:70},{x:185,y:50},{x:170,y:70},{x:200,y:105},{x:230,y:70},{x:215,y:50},{x:200,y:70}] },
+        // Corazón Derecha
+        { color: '#e63946', delay: 1200, points: [{x:340,y:180},{x:330,y:165},{x:320,y:180},{x:340,y:210},{x:360,y:180},{x:350,y:165},{x:340,y:180}] },
         
-        for (let loop = 0; loop < 5; loop++) {
-          notes.forEach((freq) => {
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(freq, now);
-            
-            gain.gain.setValueAtTime(0.08, now);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
-            
-            osc.connect(gain);
-            gain.connect(ctx.destination);
-            
-            osc.start(now);
-            osc.stop(now + 0.8);
-            
-            now += 0.5;
-          });
+        // Pelo Chico (Rizos superiores)
+        { color: '#3a2312', delay: 1800, points: [{x:180,y:150},{x:170,y:130},{x:190,y:110},{x:220,y:105},{x:250,y:115},{x:270,y:135},{x:280,y:160},{x:270,y:185},{x:250,y:200},{x:230,y:200}] },
+        { color: '#3a2312', delay: 2400, points: [{x:190,y:130},{x:210,y:120},{x:240,y:125},{x:260,y:145},{x:265,y:170}] },
+        
+        // Espalda/Cuerpo del chico
+        { color: '#2b2d42', delay: 3000, points: [{x:240,y:210},{x:270,y:225},{x:300,y:250},{x:315,y:300},{x:325,y:350}] },
+
+        // Pelo Largo y Rizado de la Chica
+        { color: '#4a2c11', delay: 3600, points: [{x:180,y:180},{x:150,y:160},{x:120,y:180},{x:100,y:220},{x:90,y:270},{x:100,y:320},{x:120,y:360},{x:145,y:390}] },
+        { color: '#4a2c11', delay: 4200, points: [{x:160,y:190},{x:130,y:200},{x:110,y:240},{x:115,y:290},{x:130,y:340},{x:155,y:385}] },
+        { color: '#4a2c11', delay: 4800, points: [{x:140,y:210},{x:125,y:250},{x:135,y:310},{x:165,y:370}] },
+
+        // Carita y Sonrisa de la Chica
+        { color: '#2b2d42', delay: 5400, points: [{x:155,y:235},{x:170,y:255},{x:195,y:255},{x:210,y:235}] },
+        // Ojitos de felicidad (Chica)
+        { color: '#2b2d42', delay: 6000, points: [{x:165,y:225},{x:172,y:218},{x:180,y:225}] },
+        { color: '#2b2d42', delay: 6200, points: [{x:190,y:225},{x:198,y:218},{x:205,y:225}] }
+      ];
+
+      paths.forEach(p => {
+        setTimeout(() => {
+          drawSmoothPath(ctx, p.points, p.color);
+        }, p.delay);
+      });
+
+      // Sonrojo y Carta al finalizar
+      setTimeout(() => {
+        // Mejillas rosadas
+        ctx.fillStyle = 'rgba(255, 154, 162, 0.6)';
+        ctx.beginPath(); ctx.arc(160, 235, 10, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(210, 230, 10, 0, Math.PI * 2); ctx.fill();
+
+        // Mostrar la carta abajo
+        document.getElementById('letter-box').style.display = 'block';
+      }, 6800);
+    }
+
+    function drawSmoothPath(ctx, points, color) {
+      ctx.strokeStyle = color;
+      let i = 0;
+      function step() {
+        if (i < points.length - 1) {
+          ctx.beginPath();
+          ctx.moveTo(points[i].x, points[i].y);
+          ctx.lineTo(points[i+1].x, points[i+1].y);
+          ctx.stroke();
+          i++;
+          requestAnimationFrame(step);
         }
+      }
+      step();
+    }
+
+    /* --- MÚSICA INSTRUMENTAL ("Fly Me to the Moon" Melody) --- */
+    function playFlyMeToTheMoon() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        
+        // Notas aproximadas de la melodía principal
+        const notes = [
+          {f: 329.63, d: 0.6}, {f: 293.66, d: 0.4}, {f: 261.63, d: 0.4}, {f: 246.94, d: 0.4},
+          {f: 220.00, d: 0.8}, {f: 293.66, d: 0.6}, {f: 261.63, d: 0.4}, {f: 246.94, d: 0.4},
+          {f: 220.00, d: 0.4}, {f: 196.00, d: 0.8}, {f: 261.63, d: 0.6}, {f: 246.94, d: 0.4},
+          {f: 220.00, d: 0.4}, {f: 196.00, d: 0.4}, {f: 174.61, d: 0.8}
+        ];
+
+        let time = ctx.currentTime + 0.1;
+
+        notes.forEach(note => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+
+          osc.type = 'triangle'; // Sonido suave tipo piano/flauta
+          osc.frequency.setValueAtTime(note.f, time);
+
+          gain.gain.setValueAtTime(0.12, time);
+          gain.gain.exponentialRampToValueAtTime(0.001, time + note.d);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+
+          osc.start(time);
+          osc.stop(time + note.d);
+
+          time += note.d;
+        });
       } catch (e) {
-        console.log("Audio no soportado autómaticamente");
+        console.log('Audio no iniciado');
       }
     }
 
-    /* LLUVIA DE CORAZONES */
+    /* --- LLUVIA DE CORAZONES --- */
     function startHeartRain() {
       setInterval(() => {
         const heart = document.createElement('div');
@@ -418,8 +448,7 @@
         setTimeout(() => heart.remove(), 4000);
       }, 400);
     }
-
-    renderPuzzle();
   </script>
 </body>
 </html>
+
