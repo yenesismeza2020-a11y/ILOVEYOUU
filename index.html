@@ -1,412 +1,1964 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Un regalito para mi amor ❤️️</title>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Un pequeño secreto para ti</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Quicksand:wght@300;400;500;600&display=swap');
+
+
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(87, 83, 112, 0.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(70, 65, 100, 0.15),
+            transparent 35%
+        ),
+        #090910;
+
+    color: #eeeeee;
+
+    font-family: "Quicksand", sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   FONDO ESTRELLADO
+========================================================= */
+
+#stars,
+#stars2,
+#stars3 {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.star {
+
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    opacity: 0.5;
+
+    animation:
+        twinkle
+        var(--duration)
+        ease-in-out
+        infinite;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.15;
+        transform: scale(0.7);
     }
 
-    body {
-      background: linear-gradient(135deg, #ffeef8 0%, #f0e6ff 100%);
-      font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      color: #4a3e4e;
-      overflow-x: hidden;
+    50% {
+        opacity: 0.9;
+        transform: scale(1.5);
+    }
+}
+
+
+/* =========================================================
+   LUNA
+========================================================= */
+
+.moon {
+
+    position: fixed;
+
+    top: 55px;
+    right: 9%;
+
+    width: 75px;
+    height: 75px;
+
+    border-radius: 50%;
+
+    background: #eeeef2;
+
+    box-shadow:
+        0 0 25px rgba(255,255,255,0.15),
+        0 0 70px rgba(180,180,210,0.08);
+
+    z-index: 1;
+}
+
+.moon::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 75px;
+    height: 75px;
+
+    border-radius: 50%;
+
+    background: #090910;
+
+    top: -12px;
+    left: 20px;
+}
+
+
+/* =========================================================
+   PANTALLAS
+========================================================= */
+
+.screen {
+
+    position: relative;
+
+    z-index: 5;
+
+    min-height: 100vh;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px 18px;
+}
+
+.card {
+
+    width: min(700px, 94vw);
+
+    text-align: center;
+
+    padding: 50px 30px;
+
+    border: 1px solid rgba(255,255,255,0.10);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25,25,38,0.92),
+            rgba(12,12,20,0.94)
+        );
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,0.55),
+        inset 0 0 40px rgba(255,255,255,0.015);
+
+    backdrop-filter: blur(8px);
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   TEXTOS
+========================================================= */
+
+.eyebrow {
+
+    font-family: "Cinzel", serif;
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    color: #aaa7bd;
+
+    margin-bottom: 20px;
+}
+
+h1 {
+
+    font-family: "Cinzel", serif;
+
+    font-weight: 400;
+
+    font-size: clamp(28px, 6vw, 48px);
+
+    letter-spacing: 2px;
+
+    margin-bottom: 18px;
+}
+
+.subtitle {
+
+    color: #aaa9b5;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    max-width: 530px;
+
+    margin: auto;
+}
+
+
+/* =========================================================
+   RUNAS DEL PUZZLE
+========================================================= */
+
+.runes {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    flex-wrap: wrap;
+
+    margin: 35px auto 25px;
+
+    max-width: 500px;
+}
+
+.rune {
+
+    width: 62px;
+    height: 62px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,0.16);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(120,117,150,0.20),
+            rgba(15,15,24,0.8)
+        );
+
+    color: #e8e7ee;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s,
+        border-color 0.25s,
+        background 0.25s,
+        box-shadow 0.25s;
+}
+
+.rune:hover {
+
+    transform: translateY(-5px);
+
+    border-color: rgba(230,228,245,0.45);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.4);
+}
+
+.rune.selected {
+
+    transform: translateY(-5px);
+
+    border-color: #d7d3e8;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(150,145,180,0.35),
+            rgba(25,25,40,0.95)
+        );
+
+    box-shadow:
+        0 0 20px rgba(190,185,220,0.15);
+}
+
+
+/* =========================================================
+   SECUENCIA ELEGIDA
+========================================================= */
+
+.sequence {
+
+    min-height: 48px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin: 18px auto;
+
+    color: #c8c6d1;
+
+    font-size: 22px;
+}
+
+.sequence span {
+
+    opacity: 0.7;
+
+    animation: appear 0.25s ease;
+}
+
+@keyframes appear {
+
+    from {
+        transform: scale(0.5);
+        opacity: 0;
     }
 
-    .container {
-      width: 100%;
-      max-width: 480px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 24px;
-      padding: 25px 20px;
-      box-shadow: 0 15px 35px rgba(210, 140, 180, 0.2);
-      text-align: center;
-      position: relative;
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   PISTA
+========================================================= */
+
+.clue {
+
+    margin: 25px auto;
+
+    max-width: 550px;
+
+    padding: 18px 20px;
+
+    border-left: 2px solid rgba(210,208,225,0.35);
+
+    background: rgba(255,255,255,0.025);
+
+    color: #bdbbc6;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+
+    text-align: left;
+}
+
+.clue strong {
+
+    color: #e5e3ec;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+button.main-button {
+
+    border: 0;
+
+    padding: 14px 32px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d9d7e5,
+            #aaa7bb
+        );
+
+    color: #111119;
+
+    font-family: "Cinzel", serif;
+
+    letter-spacing: 2px;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s,
+        opacity 0.25s;
+}
+
+button.main-button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 30px rgba(220,220,240,0.18);
+}
+
+button.main-button:active {
+
+    transform: translateY(0);
+}
+
+button.main-button:disabled {
+
+    opacity: 0.35;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   MENSAJE DE ERROR
+========================================================= */
+
+#errorMessage {
+
+    height: 25px;
+
+    margin-top: 15px;
+
+    color: #c7a7b4;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   PANTALLA DEL REGALO
+========================================================= */
+
+#giftScreen {
+
+    min-height: 100vh;
+
+    padding-top: 50px;
+
+    padding-bottom: 70px;
+}
+
+.gift-title {
+
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(25px, 5vw, 40px);
+
+    font-weight: 400;
+
+    margin-bottom: 10px;
+}
+
+.gift-subtitle {
+
+    color: #aaa8b5;
+
+    margin-bottom: 25px;
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   ÁREA DEL DIBUJO
+========================================================= */
+
+.drawing-wrapper {
+
+    width: min(723px, 94vw);
+
+    margin: 0 auto;
+
+    position: relative;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,0.5);
+}
+
+#drawingCanvas {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   BRILLO AL FINAL
+========================================================= */
+
+.final-glow {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255,255,255,0.35),
+            transparent 45%
+        );
+
+    transition: opacity 2s ease;
+}
+
+.final-glow.show {
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   CARTA
+========================================================= */
+
+.love-letter {
+
+    width: min(680px, 92vw);
+
+    margin: 35px auto 0;
+
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity 2s ease,
+        transform 2s ease;
+}
+
+.love-letter.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.love-message {
+
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(18px, 3.5vw, 25px);
+
+    line-height: 1.9;
+
+    color: #e9e7ef;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,0.08);
+}
+
+.signature {
+
+    margin-top: 20px;
+
+    color: #a9a6b5;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================================
+   CORAZONES
+========================================================= */
+
+.hearts {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 20;
+}
+
+.heart {
+
+    position: absolute;
+
+    color: #d7b9ca;
+
+    font-size: 16px;
+
+    opacity: 0;
+
+    animation: floatHeart 5s linear forwards;
+}
+
+@keyframes floatHeart {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(0.6);
     }
 
-    h1 {
-      font-family: 'Caveat', cursive;
-      font-size: 2.2rem;
-      color: #d85c8a;
-      margin-bottom: 10px;
+    15% {
+
+        opacity: 0.7;
     }
 
-    p.sub {
-      font-size: 0.9rem;
-      color: #7a6a80;
-      margin-bottom: 18px;
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translateY(-100vh)
+            scale(1.2)
+            rotate(15deg);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .card {
+
+        padding: 40px 18px;
     }
 
-    /* PASO 1: PUZZLE */
-    #step-puzzle {
-      display: block;
+    .rune {
+
+        width: 54px;
+        height: 54px;
+
+        font-size: 21px;
     }
 
-    .puzzle-board {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
-      width: 270px;
-      height: 270px;
-      margin: 0 auto 15px auto;
-      background: #ffd6e7;
-      padding: 6px;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    .moon {
+
+        width: 52px;
+        height: 52px;
+
+        top: 30px;
+        right: 7%;
     }
 
-    .piece {
-      width: 82px;
-      height: 82px;
-      border-radius: 8px;
-      cursor: pointer;
-      user-select: none;
-      transition: transform 0.15s ease, opacity 0.2s;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    .moon::after {
+
+        width: 52px;
+        height: 52px;
+
+        left: 15px;
+        top: -8px;
     }
 
-    .piece.empty {
-      background: rgba(255, 255, 255, 0.3) !important;
-      box-shadow: none;
-      cursor: default;
-    }
+    .love-message {
 
-    .btn {
-      background: linear-gradient(135deg, #ff7597 0%, #d85c8a 100%);
-      color: white;
-      border: none;
-      padding: 12px 28px;
-      font-size: 1.05rem;
-      font-weight: 600;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 6px 18px rgba(216, 92, 138, 0.35);
-      transition: all 0.3s ease;
-      font-family: 'Poppins', sans-serif;
+        font-size: 18px;
     }
+}
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(216, 92, 138, 0.5);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: #9d8aa5;
-      font-size: 0.82rem;
-      margin-top: 10px;
-      text-decoration: underline;
-      cursor: pointer;
-      border: none;
-    }
-
-    /* PASO 2: PUERTA DESBLOQUEADA */
-    #step-door {
-      display: none;
-      animation: fadeIn 0.8s ease forwards;
-    }
-
-    .door-icon {
-      font-size: 4rem;
-      margin: 15px 0;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-
-    /* PASO 3: DIBUJO Y CARTA */
-    #step-drawing {
-      display: none;
-      animation: fadeIn 0.8s ease forwards;
-    }
-
-    .art-container {
-      width: 100%;
-      max-width: 320px;
-      height: 380px;
-      margin: 0 auto;
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 10px;
-      box-shadow: inset 0 0 10px rgba(0,0,0,0.03), 0 8px 20px rgba(0,0,0,0.05);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Dibujo con animación de revelado */
-    .art-image {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 12px;
-      clip-path: circle(0% at 50% 50%);
-      transition: clip-path 4s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    .art-image.revealed {
-      clip-path: circle(150% at 50% 50%);
-    }
-
-    /* CARTA FINAL */
-    #letter-box {
-      display: none;
-      margin-top: 20px;
-      background: #fff8fc;
-      border: 2px dashed #f1789e;
-      border-radius: 16px;
-      padding: 18px;
-      text-align: center;
-      animation: fadeInUp 1s ease forwards;
-    }
-
-    #letter-box h2 {
-      font-family: 'Caveat', cursive;
-      font-size: 1.9rem;
-      color: #d85c8a;
-      margin-bottom: 6px;
-    }
-
-    #letter-box p {
-      font-size: 0.95rem;
-      line-height: 1.5;
-      color: #5a4b60;
-      font-weight: 500;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .heart {
-      position: fixed;
-      color: #ff6b8b;
-      font-size: 20px;
-      pointer-events: none;
-      animation: floatUp 4s linear infinite;
-      z-index: 100;
-    }
-
-    @keyframes floatUp {
-      0% { transform: translateY(100vh) scale(0); opacity: 1; }
-      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
-    }
-  </style>
+</style>
 </head>
+
+
 <body>
 
-  <div class="container">
-    
-    <!-- PASO 1: PUZZLE -->
-    <div id="step-puzzle">
-      <h1>🔓 La Puerta Secreta</h1>
-      <p class="sub">Arma el rompecabezas para desbloquear el regalo</p>
-      
-      <div class="puzzle-board" id="puzzle-board"></div>
-      
-      <button class="btn-secondary" onclick="unlockDoor()">¿Muy difícil? Desbloquear de todos modos ✨</button>
+
+<!-- =====================================================
+     ESTRELLAS
+====================================================== -->
+
+<div id="stars"></div>
+<div id="stars2"></div>
+<div id="stars3"></div>
+
+<div class="moon"></div>
+
+
+<!-- =====================================================
+     CORAZONES
+====================================================== -->
+
+<div class="hearts" id="hearts"></div>
+
+
+<!-- =====================================================
+     PUZZLE
+====================================================== -->
+
+<section class="screen" id="puzzleScreen">
+
+    <div class="card">
+
+        <div class="eyebrow">
+            Para quien comparte mi cielo
+        </div>
+
+        <h1>
+            Hay algo esperándote...
+        </h1>
+
+        <p class="subtitle">
+            Pero primero tendrás que encontrar el camino.
+            Algunas cosas importantes no se abren con una llave,
+            sino con un poco de paciencia.
+        </p>
+
+
+        <div class="clue">
+
+            <strong>El acertijo de las cinco estrellas</strong><br><br>
+
+            Cinco símbolos guardan el camino hacia el regalo.
+            Debes elegirlos en el orden correcto.
+
+            <br><br>
+
+            ★ La estrella va antes que la luna.<br>
+
+            ☾ La luna está inmediatamente después del corazón.<br>
+
+            ♡ El corazón no puede ser el primero.<br>
+
+            ✦ El pequeño vacío debe quedar entre la estrella y el trébol.<br>
+
+            ♧ El trébol es el último.
+
+            <br><br>
+
+            <strong>
+                Cuando creas tener la respuesta,
+                selecciona los símbolos uno por uno.
+            </strong>
+
+        </div>
+
+
+        <!-- RUNAS -->
+
+        <div class="runes">
+
+            <button class="rune"
+                    data-symbol="★"
+                    aria-label="Estrella">
+                ★
+            </button>
+
+            <button class="rune"
+                    data-symbol="☾"
+                    aria-label="Luna">
+                ☾
+            </button>
+
+            <button class="rune"
+                    data-symbol="♡"
+                    aria-label="Corazón">
+                ♡
+            </button>
+
+            <button class="rune"
+                    data-symbol="✦"
+                    aria-label="Estrella pequeña">
+                ✦
+            </button>
+
+            <button class="rune"
+                    data-symbol="♧"
+                    aria-label="Trébol">
+                ♧
+            </button>
+
+        </div>
+
+
+        <div class="sequence" id="sequence">
+
+            <span style="opacity:0.35;">
+                ✧ ✧ ✧ ✧ ✧
+            </span>
+
+        </div>
+
+
+        <div id="errorMessage"></div>
+
+
+        <button
+            class="main-button"
+            id="solveButton">
+
+            COMPROBAR
+
+        </button>
+
+
+        <br><br>
+
+
+        <button
+            class="main-button hidden"
+            id="openGiftButton">
+
+            ABRIR REGALO
+
+        </button>
+
     </div>
 
-    <!-- PASO 2: PUERTA DESBLOQUEADA -->
-    <div id="step-door">
-      <h1>✨ ¡Puerta Desbloqueada! ✨</h1>
-      <p class="sub">Presiona el botón para descubrir tu sorpresa</p>
-      
-      <div class="door-icon">🎁</div>
-      
-      <button class="btn" onclick="startSurprise()">✨ Abrir mi regalo ✨</button>
+</section>
+
+
+
+<!-- =====================================================
+     REGALO
+====================================================== -->
+
+<section class="screen hidden" id="giftScreen">
+
+    <div style="width:100%; text-align:center;">
+
+        <div class="eyebrow">
+            Para ti, mi niño
+        </div>
+
+        <h2 class="gift-title">
+            Una pequeña parte de nosotros
+        </h2>
+
+        <p class="gift-subtitle">
+            Quédate aquí un momento...
+        </p>
+
+
+        <div class="drawing-wrapper">
+
+            <canvas id="drawingCanvas"></canvas>
+
+            <div
+                class="final-glow"
+                id="finalGlow">
+            </div>
+
+        </div>
+
+
+        <div class="love-letter" id="loveLetter">
+
+            <div class="love-message">
+
+                Porque te amo hoy más que ayer
+                pero menos que mañana, mi niño.
+                <br>
+
+                Te amo, eres el mejor novio
+                que pude haber soñado.
+
+            </div>
+
+            <div class="signature">
+
+                BAJO EL MISMO CIELO ESTRELLADO ♡
+
+            </div>
+
+        </div>
+
     </div>
 
-    <!-- PASO 3: DIBUJO Y CARTA -->
-    <div id="step-drawing">
-      <h1>un dibujito para mi amor ❤️</h1>
-      
-      <div class="art-container">
-        <!-- SVG idéntico dibujándose -->
-        <svg id="drawing-svg" viewBox="0 0 350 400" style="width:100%; height:100%;">
-          <!-- Corazón 1 -->
-          <path class="draw-path" d="M 60 160 C 60 135 35 125 25 140 C 15 125 0 135 0 160 C 0 185 25 205 25 215 C 25 205 60 185 60 160 Z" transform="translate(40,10)" stroke="#e63946" stroke-width="4" fill="none" stroke-linecap="round"/>
-          <!-- Corazón 2 -->
-          <path class="draw-path" d="M 60 160 C 60 135 35 125 25 140 C 15 125 0 135 0 160 C 0 185 25 205 25 215 C 25 205 60 185 60 160 Z" transform="translate(150,-90)" stroke="#e63946" stroke-width="4" fill="none" stroke-linecap="round"/>
-          <!-- Corazón 3 -->
-          <path class="draw-path" d="M 60 160 C 60 135 35 125 25 140 C 15 125 0 135 0 160 C 0 185 25 205 25 215 C 25 205 60 185 60 160 Z" transform="translate(250,50)" stroke="#e63946" stroke-width="4" fill="none" stroke-linecap="round"/>
-          
-          <!-- Pareja SVG -->
-          <path class="draw-path" d="M 140 180 C 120 120 220 90 250 160 C 270 200 220 230 190 220 C 170 260 210 320 230 360" stroke="#3a2312" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <path class="draw-path" d="M 160 200 C 120 180 80 230 85 300 C 90 350 120 380 140 400" stroke="#4a2c11" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <path class="draw-path" d="M 130 230 C 150 255 180 255 195 235" stroke="#2b2d42" stroke-width="4" fill="none" stroke-linecap="round"/>
-        </svg>
-      </div>
+</section>
 
-      <!-- CARTA ROMÁNTICA -->
-      <div id="letter-box">
-        <h2>Para el amor de mi vida ❤️</h2>
-        <p>Hoy te amo mas que ayer y menos que mañana, TE AMO MI NIÑOOO</p>
-      </div>
-    </div>
 
-  </div>
 
-  <script>
-    /* --- PUZZLE --- */
-    const puzzleBoard = document.getElementById('puzzle-board');
-    let pieces = [0, 1, 2, 3, 4, 5, 6, 8, 7];
+<script>
 
-    const imgCanvas = document.createElement('canvas');
-    imgCanvas.width = 300; imgCanvas.height = 300;
-    const imgCtx = imgCanvas.getContext('2d');
-    
-    imgCtx.fillStyle = '#ffeef5';
-    imgCtx.fillRect(0, 0, 300, 300);
-    imgCtx.fillStyle = '#ff6b8b';
-    imgCtx.beginPath();
-    imgCtx.arc(110, 120, 50, Math.PI, 0, false);
-    imgCtx.arc(190, 120, 50, Math.PI, 0, false);
-    imgCtx.lineTo(150, 220);
-    imgCtx.closePath();
-    imgCtx.fill();
-    imgCtx.fillStyle = '#ffffff';
-    imgCtx.font = 'bold 22px sans-serif';
-    imgCtx.textAlign = 'center';
-    imgCtx.fillText('TE AMO', 150, 140);
+/* =========================================================
+   CREAR ESTRELLAS
+========================================================= */
 
-    function renderPuzzle() {
-      puzzleBoard.innerHTML = '';
-      pieces.forEach((pieceIdx, currentPos) => {
-        const div = document.createElement('div');
-        div.className = 'piece' + (pieceIdx === 8 ? ' empty' : '');
+function createStars(containerId, amount) {
 
-        if (pieceIdx !== 8) {
-          const row = Math.floor(pieceIdx / 3);
-          const col = pieceIdx % 3;
-          div.style.backgroundImage = `url(${imgCanvas.toDataURL()})`;
-          div.style.backgroundSize = '250px 250px';
-          div.style.backgroundPosition = `-${col * 83}px -${row * 83}px`;
+    const container =
+        document.getElementById(containerId);
+
+    for (let i = 0; i < amount; i++) {
+
+        const star =
+            document.createElement("div");
+
+        star.className = "star";
+
+        star.style.left =
+            Math.random() * 100 + "%";
+
+        star.style.top =
+            Math.random() * 100 + "%";
+
+        const size =
+            Math.random() * 2.5 + 0.5;
+
+        star.style.width =
+            size + "px";
+
+        star.style.height =
+            size + "px";
+
+        star.style.setProperty(
+            "--duration",
+            (2 + Math.random() * 5) + "s"
+        );
+
+        star.style.animationDelay =
+            Math.random() * 5 + "s";
+
+        container.appendChild(star);
+    }
+}
+
+createStars("stars", 90);
+createStars("stars2", 50);
+createStars("stars3", 25);
+
+
+/* =========================================================
+   PUZZLE
+========================================================= */
+
+const runes =
+    document.querySelectorAll(".rune");
+
+const sequence =
+    document.getElementById("sequence");
+
+const solveButton =
+    document.getElementById("solveButton");
+
+const openGiftButton =
+    document.getElementById("openGiftButton");
+
+const errorMessage =
+    document.getElementById("errorMessage");
+
+
+let selected = [];
+
+
+/*
+    SOLUCIÓN:
+
+    ★ ♡ ☾ ✦ ♧
+
+    La lógica del acertijo conduce a este orden.
+*/
+
+
+const correctSequence =
+    ["★", "♡", "☾", "✦", "♧"];
+
+
+runes.forEach(rune => {
+
+    rune.addEventListener("click", () => {
+
+        if (selected.length >= 5) {
+            return;
         }
 
-        div.onclick = () => movePiece(currentPos);
-        puzzleBoard.appendChild(div);
-      });
+        const symbol =
+            rune.dataset.symbol;
+
+        if (selected.includes(symbol)) {
+            return;
+        }
+
+        selected.push(symbol);
+
+        rune.classList.add("selected");
+
+        updateSequence();
+
+    });
+
+});
+
+
+function updateSequence() {
+
+    sequence.innerHTML = "";
+
+    if (selected.length === 0) {
+
+        sequence.innerHTML =
+            '<span style="opacity:0.35;">✧ ✧ ✧ ✧ ✧</span>';
+
+        return;
     }
 
-    function movePiece(pos) {
-      const emptyPos = pieces.indexOf(8);
-      const validMoves = [pos - 1, pos + 1, pos - 3, pos + 3];
+    selected.forEach(symbol => {
 
-      if (validMoves.includes(emptyPos)) {
-        if ((pos % 3 === 0 && emptyPos === pos - 1) || (pos % 3 === 2 && emptyPos === pos + 1)) return;
-        [pieces[pos], pieces[emptyPos]] = [pieces[emptyPos], pieces[pos]];
-        renderPuzzle();
-        checkPuzzleWin();
-      }
+        const span =
+            document.createElement("span");
+
+        span.textContent = symbol;
+
+        sequence.appendChild(span);
+
+    });
+
+}
+
+
+solveButton.addEventListener("click", () => {
+
+    if (selected.length !== 5) {
+
+        errorMessage.textContent =
+            "Aún faltan estrellas por colocar...";
+
+        return;
     }
 
-    function checkPuzzleWin() {
-      if (pieces.every((val, idx) => val === idx)) {
-        setTimeout(unlockDoor, 300);
-      }
+
+    const correct =
+        selected.every(
+            (symbol, index) =>
+                symbol === correctSequence[index]
+        );
+
+
+    if (!correct) {
+
+        errorMessage.textContent =
+            "El cielo parece decirte que ese no es el camino...";
+
+        shakePuzzle();
+
+        return;
     }
 
-    function unlockDoor() {
-      document.getElementById('step-puzzle').style.display = 'none';
-      document.getElementById('step-door').style.display = 'block';
+
+    errorMessage.textContent =
+        "Has encontrado el camino. ✦";
+
+    errorMessage.style.color =
+        "#d8d5e5";
+
+
+    solveButton.classList.add("hidden");
+
+    openGiftButton.classList.remove("hidden");
+
+});
+
+
+function shakePuzzle() {
+
+    const card =
+        document.querySelector("#puzzleScreen .card");
+
+    card.animate(
+
+        [
+            { transform: "translateX(0)" },
+            { transform: "translateX(-8px)" },
+            { transform: "translateX(8px)" },
+            { transform: "translateX(-5px)" },
+            { transform: "translateX(5px)" },
+            { transform: "translateX(0)" }
+        ],
+
+        {
+            duration: 350
+        }
+
+    );
+
+}
+
+
+/* =========================================================
+   BOTÓN ABRIR REGALO
+========================================================= */
+
+openGiftButton.addEventListener(
+    "click",
+    openGift
+);
+
+
+function openGift() {
+
+    document
+        .getElementById("puzzleScreen")
+        .classList.add("hidden");
+
+    document
+        .getElementById("giftScreen")
+        .classList.remove("hidden");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+
+    /*
+        La música comienza solamente después
+        de una interacción del usuario.
+    */
+
+    startMusic();
+
+
+    /*
+        Empezamos el dibujo.
+    */
+
+    startDrawing();
+
+}
+
+
+/* =========================================================
+   MÚSICA
+   Melodía original creada con Web Audio API
+========================================================= */
+
+let audioContext = null;
+
+let masterGain = null;
+
+let musicStarted = false;
+
+
+function startMusic() {
+
+    if (musicStarted) {
+        return;
     }
 
-    renderPuzzle();
+    musicStarted = true;
 
-    /* --- INICIAR SORPRESA --- */
-    function startSurprise() {
-      document.getElementById('step-door').style.display = 'none';
-      document.getElementById('step-drawing').style.display = 'block';
-      
-      playFlyMeToTheMoon();
-      startHeartRain();
-      animateSVG();
 
-      setTimeout(() => {
-        document.getElementById('letter-box').style.display = 'block';
-      }, 4500);
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+
+    audioContext =
+        new AudioContext();
+
+
+    masterGain =
+        audioContext.createGain();
+
+
+    masterGain.gain.value =
+        0.055;
+
+
+    masterGain.connect(
+        audioContext.destination
+    );
+
+
+    /*
+        Melodía original.
+
+        Notas:
+        C4 D4 E4 G4
+        E4 D4 C4
+        G3 C4 D4
+        E4 G4 E4
+    */
+
+
+    const melody = [
+
+        ["C4", 0.00, 0.55],
+        ["E4", 0.60, 0.55],
+        ["G4", 1.20, 0.70],
+        ["E4", 2.00, 0.55],
+
+        ["D4", 2.60, 0.55],
+        ["C4", 3.20, 0.80],
+
+        ["G3", 4.20, 0.65],
+        ["C4", 5.00, 0.65],
+        ["D4", 5.80, 0.65],
+
+        ["E4", 6.60, 0.65],
+        ["G4", 7.40, 0.65],
+        ["E4", 8.20, 0.90],
+
+        ["D4", 9.30, 0.60],
+        ["C4", 10.00, 1.20]
+
+    ];
+
+
+    /*
+        Repetir la melodía suavemente.
+    */
+
+    const duration =
+        11.8;
+
+
+    function playNote(
+        note,
+        startTime,
+        length
+    ) {
+
+        const frequencies = {
+
+            "G3": 196.00,
+
+            "C4": 261.63,
+            "D4": 293.66,
+            "E4": 329.63,
+            "G4": 392.00
+
+        };
+
+
+        const oscillator =
+            audioContext.createOscillator();
+
+
+        const gain =
+            audioContext.createGain();
+
+
+        oscillator.type =
+            "sine";
+
+
+        oscillator.frequency.value =
+            frequencies[note];
+
+
+        oscillator.connect(gain);
+
+        gain.connect(masterGain);
+
+
+        const now =
+            audioContext.currentTime;
+
+
+        const start =
+            now + startTime;
+
+
+        gain.gain.setValueAtTime(
+            0,
+            start
+        );
+
+
+        gain.gain.linearRampToValueAtTime(
+            0.75,
+            start + 0.08
+        );
+
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            start + length
+        );
+
+
+        oscillator.start(start);
+
+        oscillator.stop(
+            start + length + 0.05
+        );
+
     }
 
-    function animateSVG() {
-      const paths = document.querySelectorAll('.draw-path');
-      paths.forEach((path) => {
-        const length = path.getTotalLength();
-        path.style.strokeDasharray = length;
-        path.style.strokeDashoffset = length;
-        path.getBoundingClientRect();
-        path.style.transition = 'stroke-dashoffset 3.5s ease-in-out';
-        path.style.strokeDashoffset = '0';
-      });
-    }
 
-    /* --- MÚSICA --- */
-    function playFlyMeToTheMoon() {
-      try {
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
-        if (!AudioCtx) return;
-        const ctx = new AudioCtx();
-        const notes = [
-          {f: 329.63, d: 0.6}, {f: 293.66, d: 0.4}, {f: 261.63, d: 0.4}, {f: 246.94, d: 0.4},
-          {f: 220.00, d: 0.8}, {f: 293.66, d: 0.6}, {f: 261.63, d: 0.4}, {f: 246.94, d: 0.4},
-          {f: 220.00, d: 0.4}, {f: 196.00, d: 0.8}, {f: 261.63, d: 0.6}, {f: 246.94, d: 0.4}
-        ];
-        let time = ctx.currentTime + 0.1;
-        notes.forEach(note => {
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(note.f, time);
-          gain.gain.setValueAtTime(0.12, time);
-          gain.gain.exponentialRampToValueAtTime(0.001, time + note.d);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(time);
-          osc.stop(time + note.d);
-          time += note.d;
+    function loopMelody() {
+
+        melody.forEach(note => {
+
+            playNote(
+                note[0],
+                note[1],
+                note[2]
+            );
+
         });
-      } catch (e) {}
+
+
+        setTimeout(
+            loopMelody,
+            duration * 1000
+        );
+
     }
 
-    /* --- CORAZONES FLOTANTES --- */
-    function startHeartRain() {
-      setInterval(() => {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = ['❤️', '💖', '✨', '💕'][Math.floor(Math.random() * 4)];
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 4000);
-      }, 400);
+
+    loopMelody();
+
+}
+
+
+/* =========================================================
+   DIBUJO
+========================================================= */
+
+const canvas =
+    document.getElementById(
+        "drawingCanvas"
+    );
+
+const ctx =
+    canvas.getContext("2d");
+
+
+const originalImage =
+    new Image();
+
+
+originalImage.src =
+    "dibujo.png";
+
+
+let imageReady = false;
+
+
+originalImage.onload = () => {
+
+    imageReady = true;
+
+};
+
+
+/* =========================================================
+   FUNCIÓN PARA PREPARAR LA IMAGEN
+   El blanco se vuelve transparente.
+========================================================= */
+
+function prepareImage() {
+
+    const tempCanvas =
+        document.createElement("canvas");
+
+    tempCanvas.width =
+        originalImage.naturalWidth;
+
+    tempCanvas.height =
+        originalImage.naturalHeight;
+
+
+    const tempCtx =
+        tempCanvas.getContext("2d");
+
+
+    tempCtx.drawImage(
+        originalImage,
+        0,
+        0
+    );
+
+
+    const imageData =
+        tempCtx.getImageData(
+            0,
+            0,
+            tempCanvas.width,
+            tempCanvas.height
+        );
+
+
+    const data =
+        imageData.data;
+
+
+    for (
+        let i = 0;
+        i < data.length;
+        i += 4
+    ) {
+
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+
+
+        /*
+            Convertimos los blancos y casi blancos
+            en transparencia.
+
+            Los trazos originales permanecen.
+        */
+
+        const brightness =
+            (r + g + b) / 3;
+
+
+        if (brightness > 242) {
+
+            data[i + 3] = 0;
+
+        }
+        else if (brightness > 220) {
+
+            const alpha =
+                Math.max(
+                    0,
+                    255 -
+                    ((brightness - 220) * 7)
+                );
+
+            data[i + 3] =
+                alpha;
+        }
+
     }
-  </script>
+
+
+    tempCtx.putImageData(
+        imageData,
+        0,
+        0
+    );
+
+
+    return tempCanvas;
+}
+
+
+/* =========================================================
+   ANIMACIÓN DEL DIBUJO
+========================================================= */
+
+async function startDrawing() {
+
+    /*
+        Si la imagen aún no terminó de cargar,
+        esperamos.
+    */
+
+    if (!imageReady) {
+
+        await new Promise(resolve => {
+
+            originalImage.onload =
+                resolve;
+
+        });
+
+    }
+
+
+    const prepared =
+        prepareImage();
+
+
+    canvas.width =
+        prepared.width;
+
+    canvas.height =
+        prepared.height;
+
+
+    /*
+        Fondo blanco.
+    */
+
+    ctx.fillStyle =
+        "#ffffff";
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    /*
+        Creamos un canvas temporal
+        con el dibujo transparente.
+    */
+
+    const sourceCanvas =
+        prepared;
+
+
+    /*
+        El dibujo se revelará mediante
+        muchos trazos curvos.
+
+        Esto evita el problema de hacer
+        solamente 2 o 3 líneas SVG.
+    */
+
+    const strokes =
+        createSketchStrokes(
+            canvas.width,
+            canvas.height
+        );
+
+
+    let current =
+        0;
+
+
+    const total =
+        strokes.length;
+
+
+    function drawNextStroke() {
+
+        if (current >= total) {
+
+            finishDrawing();
+
+            return;
+        }
+
+
+        const stroke =
+            strokes[current];
+
+
+        revealStroke(
+            sourceCanvas,
+            stroke,
+            () => {
+
+                current++;
+
+                setTimeout(
+                    drawNextStroke,
+                    18
+                );
+
+            }
+        );
+
+    }
+
+
+    drawNextStroke();
+
+}
+
+
+/* =========================================================
+   CREAR TRAZOS
+========================================================= */
+
+function createSketchStrokes(
+    width,
+    height
+) {
+
+    const strokes = [];
+
+
+    /*
+        Zona aproximada donde está
+        realmente el dibujo.
+
+        No hacemos toda la hoja,
+        solamente la zona de la ilustración.
+    */
+
+    const left = width * 0.13;
+    const right = width * 0.93;
+
+    const top = height * 0.20;
+    const bottom = height * 0.76;
+
+
+    /*
+        Barrido serpenteante.
+
+        Cada línea se curva ligeramente,
+        dando sensación de lápiz.
+    */
+
+    const rows = 95;
+
+
+    for (let i = 0; i < rows; i++) {
+
+        const y =
+            top +
+            ((bottom - top) * i / rows);
+
+
+        const points = [];
+
+
+        const segments = 28;
+
+
+        for (
+            let j = 0;
+            j <= segments;
+            j++
+        ) {
+
+            let x;
+
+
+            if (i % 2 === 0) {
+
+                x =
+                    left +
+                    ((right - left) *
+                    j /
+                    segments);
+
+            } else {
+
+                x =
+                    right -
+                    ((right - left) *
+                    j /
+                    segments);
+
+            }
+
+
+            /*
+                Curvatura irregular
+                para que no parezca
+                una línea mecánica.
+            */
+
+            const wave =
+                Math.sin(
+                    j * 0.55 + i * 0.4
+                ) * 3;
+
+
+            points.push({
+
+                x: x,
+
+                y: y + wave
+
+            });
+
+        }
+
+
+        strokes.push({
+            points: points,
+            width: 14
+        });
+
+    }
+
+
+    return strokes;
+}
+
+
+/* =========================================================
+   REVELAR CADA TRAZO
+========================================================= */
+
+function revealStroke(
+    sourceCanvas,
+    stroke,
+    callback
+) {
+
+    let index = 0;
+
+
+    function animate() {
+
+        if (
+            index >=
+            stroke.points.length
+        ) {
+
+            callback();
+
+            return;
+        }
+
+
+        const p =
+            stroke.points[index];
+
+
+        /*
+            Revelamos la imagen mediante
+            pequeños círculos superpuestos.
+
+            El resultado es mucho más orgánico
+            que un simple wipe.
+        */
+
+        ctx.save();
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            stroke.width,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.clip();
+
+
+        ctx.drawImage(
+            sourceCanvas,
+            0,
+            0
+        );
+
+
+        ctx.restore();
+
+
+        index++;
+
+
+        requestAnimationFrame(
+            animate
+        );
+
+    }
+
+
+    animate();
+
+}
+
+
+/* =========================================================
+   FINAL DEL DIBUJO
+========================================================= */
+
+function finishDrawing() {
+
+    /*
+        Una última pasada garantiza que
+        todos los detalles de la imagen
+        queden visibles.
+    */
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    ctx.fillStyle =
+        "#ffffff";
+
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    /*
+        Para garantizar que el resultado final
+        sea exactamente la imagen original,
+        dibujamos la imagen completa al terminar.
+    */
+
+    ctx.drawImage(
+        originalImage,
+        0,
+        0
+    );
+
+
+    document
+        .getElementById("finalGlow")
+        .classList.add("show");
+
+
+    setTimeout(() => {
+
+        document
+            .getElementById("loveLetter")
+            .classList.add("show");
+
+
+        createHearts();
+
+    }, 900);
+
+}
+
+
+/* =========================================================
+   CORAZONES FLOTANTES
+========================================================= */
+
+function createHearts() {
+
+    const container =
+        document.getElementById("hearts");
+
+
+    let amount = 0;
+
+
+    const interval =
+        setInterval(() => {
+
+            if (amount >= 25) {
+
+                clearInterval(interval);
+
+                return;
+            }
+
+
+            const heart =
+                document.createElement("div");
+
+
+            heart.className =
+                "heart";
+
+
+            heart.textContent =
+                "♡";
+
+
+            heart.style.left =
+                Math.random() * 100 + "%";
+
+
+            heart.style.bottom =
+                "-20px";
+
+
+            heart.style.animationDuration =
+                (4 + Math.random() * 4) + "s";
+
+
+            heart.style.fontSize =
+                (12 + Math.random() * 14) + "px";
+
+
+            container.appendChild(
+                heart
+            );
+
+
+            setTimeout(() => {
+
+                heart.remove();
+
+            }, 8000);
+
+
+            amount++;
+
+        }, 350);
+
+}
+
+
+/* =========================================================
+   PREVENIR SELECCIÓN ACCIDENTAL
+========================================================= */
+
+document.addEventListener(
+    "dragstart",
+    event => {
+        event.preventDefault();
+    }
+);
+
+</script>
+
 </body>
 </html>
-   
-    
 
+ 
